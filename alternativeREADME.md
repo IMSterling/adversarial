@@ -1,8 +1,5 @@
 
 # ***Developing Patch Based Adversarial Attacks***
-## Ian McDiarmid-Sterling
-##### Swarthmore College
-##### 14 August, 2020
 
 This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my research report.
 
@@ -64,9 +61,6 @@ $ python adversarial_attack.py config.gin
 $ python adversarial_attack.py config.gin
 ```
 <img src="optimization1.png" alt="Optimization" width="300"/> <img src="optimization2.png" alt="Visualization" width="300"/> <img src="optimization3.png" alt="optimization" width="300"/>
-
-
-
 
 ## Questions?
 Feel free to email me at ianmcdiarmidsterling at gmail dot com
