@@ -24,14 +24,6 @@ This is the code associated with my research, generated with funding from Swarth
   <img width="400" height="400" src="duplicate.png">
 </p>
 
-
-
---- ![Adversarial_patch](duplicate.png)
-
-
-
-
-
 ### Installation
 
 
