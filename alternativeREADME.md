@@ -34,7 +34,7 @@ $ pip install -U -r requirements.txt
 ```bash
 $ python adversarial_attack.py config.gin
 ```
-<img src="training2.png" alt="Training" width="500"/>
+<img src="training2.png" alt="Training" width="1000"/>
 
 
 ## Visualization
