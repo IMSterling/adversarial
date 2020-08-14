@@ -113,7 +113,7 @@ python adversarial_attack.py config.gin
 ```bash
 python adversarial_attack.py config.gin
 ```
-<img src="Visualization1.png" alt="Visualization" width="500"/>
+<img src="visualization1.png" alt="Visualization" width="500"/>
 
 
 ### Setup
