@@ -100,9 +100,13 @@ $ pip install -U -r requirements.txt
 - All the `code` required to get started
 - Images of what it should look like
 
-### Clone
+## Training
+- Set the main logic command in the config.gin to 'train'
+```bash
+python adversarial_attack.py config.gin
+```
 
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
+
 
 ### Setup
 
