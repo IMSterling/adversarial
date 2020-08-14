@@ -67,8 +67,9 @@ $ python adversarial_attack.py config.gin
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
 
 ## Acknowledgments
-Special thanks for discussion, guidance, and support to:
+Special thank for discussion, guidance, and support to:
 - Professor Allan Moser 
 - David Sterling PhD 
+Special thank you to all the grant donors making undergraduate research like this possible.
 
 
