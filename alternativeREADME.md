@@ -67,7 +67,7 @@ Feel free to email me at ianmcdiarmidsterling at gmail dot com
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
 
 ## Acknowledgments
-Special thanks to:
+Special thanks for discussion, guidance, and support to:
 - Professor Allan Moser 
 - David Sterling PhD 
 
