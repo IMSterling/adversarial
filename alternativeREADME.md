@@ -29,7 +29,7 @@
 
 ***INSERT ANOTHER GRAPHIC HERE***
 
-[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
+
 
 - Most people will glance at your `README`, *maybe* star it, and leave
 - Ergo, people should understand instantly what your project is about based on your repo
@@ -127,7 +127,7 @@ python adversarial_attack.py config.gin
 ```bash
 python adversarial_attack.py config.gin
 ```
-<img src="optimization1.png" alt="Optimization" width="500"/> <img src="optimization2.png" alt="Visualization" width="500"/> <img src="optimization3.png" alt="Visualization" width="500"/>
+<img src="optimization1.png" alt="Optimization" width="300"/> <img src="optimization2.png" alt="Visualization" width="300"/> <img src="optimizaiton3.png" alt="optimization" width="300"/>
 
 
 
