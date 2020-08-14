@@ -28,30 +28,33 @@ Python 3.7 or later with all `requirements.txt` dependencies installed. To insta
 $ pip install -U -r requirements.txt
 ```
 
-## Training
-- Set the main logic command in the config.gin to 'train'
+## Patch Training
+- Set the main logic command in config.gin to 'train'
+- Set optional configuration options in config.gin
 ```bash
 $ python adversarial_attack.py config.gin
 ```
 <img src="training2.png" alt="Training" width="1000"/>
 
 
-## Visualization
-- Set the main logic command in the config.gin to 'visualize'
+## Patch Visualization
+- Set the main logic command in config.gin to 'visualize'
+- Set optional configuration options in config.gin
 ```bash
 $ python adversarial_attack.py config.gin
 ```
 <img src="visualization1.png" alt="Visualization" width="1200"/>
 
-## Evaluation
-- Set the main logic command in the config.gin to 'evaluate'
-- Set the secondary logic command if desired
+## Patch Evaluation
+- Set the main logic command in config.gin to 'evaluate'
+- Set the secondary evaluation logic command if desired
+- Set optional configuration options in config.gin
 ```bash
 $ python adversarial_attack.py config.gin
 ```
 ## Hyper Parameter Optimization
-- Set the main logic command in the config.gin to 'optimize'
-- Set the optimization parameters in the config.gin
+- Set the main logic command in config.gin to 'optimize'
+- Set the optimization parameters in config.gin
 ```bash
 $ python adversarial_attack.py config.gin
 ```
