@@ -20,6 +20,7 @@ This is the code associated with my research, generated with funding from Swarth
 
 ## Adversarial Patch
 <img src="duplicate.png" alt="Adversarial patch" width="500"/>
+<img src="duplicate.jpg" alt="Adversarial patch" width="700" class="center"/>
 
 
 --- ![Adversarial_patch](duplicate.png)
@@ -28,7 +29,7 @@ This is the code associated with my research, generated with funding from Swarth
 
 
 
-## Installation
+### Installation
 
 
 ## Requirements
@@ -72,15 +73,13 @@ $ python adversarial_attack.py config.gin
 <img src="optimization1.png" alt="Optimization" width="300"/> <img src="optimization2.png" alt="Visualization" width="300"/> <img src="optimization3.png" alt="optimization" width="300"/>
 
 
----
----
----
+
 
 ## Questions?
 Feel free to email me at ianmcdiarmidsterling at gmail dot com
 
 
----
+
 
 ## License
 
