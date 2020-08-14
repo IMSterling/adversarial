@@ -1,6 +1,7 @@
-# -> Developing Patch Based Adversarial Attacks <-
-## Swarthmore College 
-##### Ian McDiarmid-Sterling
+# *Developing Patch Based Adversarial Attacks*
+## Ian McDiarmid-Sterling
+##### Swarthmore College
+##### 14 August, 2020
 
 This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my report.
 
