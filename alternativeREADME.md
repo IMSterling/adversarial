@@ -1,4 +1,3 @@
-<img src="duplicate.png" alt="Adversarial patch" width="500"/>
 
 # *Developing Patch Based Adversarial Attacks*
 ## Ian McDiarmid-Sterling
@@ -20,10 +19,10 @@ This is the code associated with my research, generated with funding from Swarth
 - The yolov3 directory contains the yolov3 object detector that is attacked.
 
 
+<img src="duplicate.png" alt="Adversarial patch" width="500"/>
 
 
-
-![Adversarial_patch](duplicate.png)
+--- ![Adversarial_patch](duplicate.png)
 
 
 
@@ -46,7 +45,7 @@ $ pip install -U -r requirements.txt
 ## Training
 - Set the main logic command in the config.gin to 'train'
 ```bash
-python adversarial_attack.py config.gin
+$ python adversarial_attack.py config.gin
 ```
 <img src="training1.png" alt="Training" width="500"/>
 
@@ -54,7 +53,7 @@ python adversarial_attack.py config.gin
 ## Visualization
 - Set the main logic command in the config.gin to 'visualize'
 ```bash
-python adversarial_attack.py config.gin
+$ python adversarial_attack.py config.gin
 ```
 <img src="visualization1.png" alt="Visualization" width="1200"/>
 
@@ -62,20 +61,16 @@ python adversarial_attack.py config.gin
 - Set the main logic command in the config.gin to 'evaluate'
 - Set the secondary logic command if desired
 ```bash
-python adversarial_attack.py config.gin
+$ python adversarial_attack.py config.gin
 ```
 ## Hyper Parameter Optimization
 - Set the main logic command in the config.gin to 'optimize'
 - Set the optimization parameters in the config.gin
 ```bash
-python adversarial_attack.py config.gin
+$ python adversarial_attack.py config.gin
 ```
 <img src="optimization1.png" alt="Optimization" width="300"/> <img src="optimization2.png" alt="Visualization" width="300"/> <img src="optimization3.png" alt="optimization" width="300"/>
 
-
-
-
-- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml" target="_blank">here</a>.
 
 ---
 
