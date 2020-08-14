@@ -3,7 +3,7 @@
 ##### Swarthmore College
 ##### 14 August, 2020
 
-This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my report.
+This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my research report.
 
 This is the code associated with my research, generated with funding from Swarthmore College's SOAR-NSE undergraduate research program, and with assistance from Profesor Allan Moser. 
 
