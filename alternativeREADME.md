@@ -1,5 +1,5 @@
 
-# *Developing Patch Based Adversarial Attacks*
+# ***Developing Patch Based Adversarial Attacks***
 ## Ian McDiarmid-Sterling
 ##### Swarthmore College
 ##### 14 August, 2020
@@ -9,7 +9,7 @@ This repository allows one to generate, evaluate, and visualize a patch based ad
 This is the code associated with my research, generated with funding from Swarthmore College's SOAR-NSE undergraduate research program, and with assistance from Profesor Allan Moser.
 
 
-## **About the Repository**
+## *About the Repository*
 - The requirements.txt file contains all the modules that are needed for the scripts
 - The script adversarial_attack.py is the adversarial attack generator and must be called with the config.gin file when run
 - The config.gin file contains the options for adversarial_attack.py 
