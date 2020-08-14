@@ -70,6 +70,8 @@ $ python adversarial_attack.py config.gin
 Special thank for discussion, guidance, and support to:
 - Professor Allan Moser 
 - David Sterling PhD 
+
+
 Special thank you to all the grant donors making undergraduate research like this possible.
 
 
