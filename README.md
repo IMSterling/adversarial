@@ -1,9 +1,9 @@
 
 # ***Developing Patch Based Adversarial Attacks***
 
-This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my research report.
+This repository contains code to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in here. Some of the code in this repository has been pulled directly from other repositories, as cited in my research report.
 
-This is the code associated with my research, funded by Swarthmore College's SOAR-NSE undergraduate research program.
+This is the code associated with my research, funded by the SOAR-NSE undergraduate research program at Swarthmore College.
 
 ## *About the Repository*
 - The requirements.txt file contains a listing of all required packages
@@ -58,7 +58,7 @@ $ python adversarial_attack.py config.gin
 <img src="optimization1.png" alt="Optimization" width="300"/> <img src="optimization2.png" alt="Visualization" width="300"/> <img src="optimization3.png" alt="optimization" width="300"/>
 
 ## Questions?
-Feel free to email me at ianmcdiarmidsterling at gmail dot com
+ Email me at ianmcdiarmidsterling at gmail dot com
 
 ## License
 
