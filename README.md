@@ -1,5 +1,6 @@
-# Summer Research 2020 Adversarial Attacks
+# Summer Research Adversarial Attacks
 ## Swarthmore College
+#### August 14,2020
 
 
 
