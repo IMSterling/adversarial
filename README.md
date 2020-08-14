@@ -52,7 +52,7 @@ $ python adversarial_attack.py config.gin
 ```bash
 $ python adversarial_attack.py config.gin
 ```
-## Hyper Parameter Optimization
+## Hyperparameter Optimization
 - Set the main logic command in config.gin to 'optimize'
 - Set the optimization parameters in config.gin
 ```bash
