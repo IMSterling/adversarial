@@ -19,8 +19,10 @@ This is the code associated with my research, generated with funding from Swarth
 - The yolov3 directory contains the yolov3 object detector that is attacked.
 
 ## Adversarial Patch
-<img src="duplicate.png" alt="Adversarial patch" width="500"/>
-<img src="duplicate.png" alt="Adversarial patch" width="700" class="center"/>
+
+<p align="center">
+  <img width="400" height="400" src="duplicate.png">
+</p>
 
 
 
