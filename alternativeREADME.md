@@ -3,8 +3,7 @@
 
 This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my research report.
 
-This is the code associated with my research, funded by Swarthmore College's SOAR-NSE undergraduate research program, and produced with assistance from Profesor Allan Moser.
-
+This is the code associated with my research, funded by Swarthmore College's SOAR-NSE undergraduate research program.
 
 ## *About the Repository*
 - The requirements.txt file contains a listing of all required packages
@@ -69,7 +68,7 @@ Feel free to email me at ianmcdiarmidsterling at gmail dot com
 
 ## Acknowledgments
 Special thanks to:
-- Professor Allan Moser
-- David Sterling PhD
+- Professor Allan Moser 
+- David Sterling PhD 
 
 
