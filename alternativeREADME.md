@@ -7,12 +7,12 @@ This is the code associated with my research, generated with funding from Swarth
 
 
 ## *About the Repository*
-- The requirements.txt file contains all the modules that are needed for the scripts
-- The script adversarial_attack.py is the adversarial attack generator and must be called with the config.gin file when run
+- The requirements.txt file contains a listing of all required packages
+- The script adversarial_attack.py is the adversarial attack generator 
 - The config.gin file contains the options for adversarial_attack.py 
 - The data directory contains training data
-- The results directory contains results from past runs and will be populated as adversarial_attack.py is run
-- The tf_logs directory is setup for tensorboard logging
+- The results directory contains results from past trainings and will be populated as adversarial_attack.py is run
+- The tf_logs directory is set up for tensorboard logging
 - The yolov3 directory contains the yolov3 object detector that is attacked.
 
 ## Adversarial Patch
@@ -28,10 +28,6 @@ Python 3.7 or later with all `requirements.txt` dependencies installed. To insta
 ```bash
 $ pip install -U -r requirements.txt
 ```
-
-
-- All the `code` required to get started
-- Images of what it should look like
 
 ## Training
 - Set the main logic command in the config.gin to 'train'
@@ -64,9 +60,6 @@ $ python adversarial_attack.py config.gin
 
 ## Questions?
 Feel free to email me at ianmcdiarmidsterling at gmail dot com
-
-
-
 
 ## License
 
