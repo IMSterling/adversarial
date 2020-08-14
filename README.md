@@ -8,19 +8,19 @@ This is the code associated with my report, generated with funding from Swarthmo
 
 --- About the repository ---
 
-The requirements.txt file contains all the modules that are needed for the scripts
+- The requirements.txt file contains all the modules that are needed for the scripts
 
-The script adversarial_attack.py is the adversarial attack generator and must be called with the config.gin file when run
+- The script adversarial_attack.py is the adversarial attack generator and must be called with the config.gin file when run
 
-The config.gin file contains the options for adversarial_attack.py 
+- The config.gin file contains the options for adversarial_attack.py 
 
-The data directory contains training data
+- The data directory contains training data
 
-The results directory contains results from past runs and will be populated as adversarial_attack.py is run
+- The results directory contains results from past runs and will be populated as adversarial_attack.py is run
 
-The tf_logs directory is setup for tensorboard logging
+- The tf_logs directory is setup for tensorboard logging
 
-The yolov3 directory contains the yolov3 object detector that is attacked.
+- The yolov3 directory contains the yolov3 object detector that is attacked.
 
 
 Enjoy ! 
