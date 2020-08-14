@@ -108,6 +108,14 @@ python adversarial_attack.py config.gin
 <img src="training1.png" alt="Training" width="500"/>
 
 
+## Visualization
+- Set the main logic command in the config.gin to 'visualize'
+```bash
+python adversarial_attack.py config.gin
+```
+<img src="Visualization1.png" alt="Visualization" width="500"/>
+
+
 ### Setup
 
 - If you want more syntax highlighting, format your code like this:
