@@ -1,9 +1,12 @@
 # Summer Research Adversarial Attacks
 ## Swarthmore College 
+##### Ian McDiarmid-Sterling
 
-Welcome to Ian McDiarmid-Sterling's adversarial attack generation package. This code generates an adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my paper
+Welcome to my patch based adversarial attack generation package. This repository allows one to generate, evaluate, and visualize an adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my paper
 
-This is the code associated with my report generated with funding from Swarthmore College's SOAR-NSE undergraduate research program. 
+This is the code associated with my report, generated with funding from Swarthmore College's SOAR-NSE undergraduate research program with assistance from Profesor Allan Moser 
+
+--- About the repository ---
 
 The requirements.txt file contains all the modules that are needed for the scripts
 
