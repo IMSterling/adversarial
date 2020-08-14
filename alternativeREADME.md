@@ -18,7 +18,7 @@ This is the code associated with my research, generated with funding from Swarth
 - The tf_logs directory is setup for tensorboard logging
 - The yolov3 directory contains the yolov3 object detector that is attacked.
 
-
+## Adversarial Patch
 <img src="duplicate.png" alt="Adversarial patch" width="500"/>
 
 
@@ -72,6 +72,8 @@ $ python adversarial_attack.py config.gin
 <img src="optimization1.png" alt="Optimization" width="300"/> <img src="optimization2.png" alt="Visualization" width="300"/> <img src="optimization3.png" alt="optimization" width="300"/>
 
 
+---
+---
 ---
 
 ## Questions?
