@@ -75,6 +75,4 @@ Special thank you for discussion, guidance, and support to:
 - David Sterling PhD 
 
 
-Thank you to all grant donors at Swarthmore College making undergraduate research like this possible.
-
-
+Thank you to all grant donors at Swarthmore College making undergraduate research possible.
