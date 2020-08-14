@@ -21,4 +21,4 @@ The yolov3 directory contains the yolov3 object detector that is attacked.
 
 
 Enjoy ! 
-Feel free to email me with questions -- ianmcdiarmidsterling@gmail.com
+Feel free to email me with questions -- imcdiar1@swarthmore.edu
