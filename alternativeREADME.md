@@ -20,7 +20,11 @@ This is the code associated with my research, generated with funding from Swarth
 
 ## Adversarial Patch
 <img src="duplicate.png" alt="Adversarial patch" width="500"/>
-<img src="duplicate.jpg" alt="Adversarial patch" width="700" class="center"/>
+<img src="duplicate.png" alt="Adversarial patch" width="700" class="center"/>
+
+<p align="center">
+  <img width="700" height="700" src="duplicate.png">
+</p>
 
 
 --- ![Adversarial_patch](duplicate.png)
