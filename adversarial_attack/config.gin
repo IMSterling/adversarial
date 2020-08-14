@@ -1,7 +1,7 @@
 ################################################ YoloV3 Adversarial Attack Generator ################################################
 
 # # ------------ Run Command Options ------------
-run_script.execute = 'train'                                                                               # Main logic command: choose from ('train','visualize','evaluate','optimize')
+run_script.execute = 'visualize'                                                                           # Main logic command: choose from ('train','visualize','evaluate','optimize')
 run_script.device = 'cpu'                                                                                  # Device to run on ('cpu' or 'cuda:0' 'cuda')
 run_script.coco_names = 'yolov3/data/coco.names'                                                           # Path to the coco names file (string)
 run_script.log_file_name = 'training0_log.txt'                                                             # Logging file to capture console logging (string)
