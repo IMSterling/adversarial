@@ -1,4 +1,4 @@
-# ->**Developing Patch Based Adversarial Attacks**<-
+# ->Developing Patch Based Adversarial Attacks<-
 ## Swarthmore College 
 ##### Ian McDiarmid-Sterling
 
