@@ -1,0 +1,853 @@
+INFO:root:
+INFO:root:================== Gin configuration start =======================
+INFO:root:################################################ YoloV3 Adversarial Attack Generator ################################################
+
+# # ------------ Run Command Options ------------
+run_script.execute = 'train'                                                                                 # Main logic command: choose from ('train','visualize','evaluate','optimize')
+run_script.device = 'cuda'                                                                                       # Device to run on ('cpu' or 'cuda:0')
+run_script.coco_names = 'yolov3/data/coco.names'                                                                # Path to the coco names file (string)
+run_script.log_file_name = 'full_dataset_log.txt'                                                                   # Logging file to capture console logging (string)
+#run_script.log_dir = 'logs'                                                                                    # Directory for log files (string)
+run_script.run_name = 'full_dataset'                                                        # Run name where results are saved (string)
+run_script.height = 175                                                                                         # Desired height of all imagery (int)
+run_script.width = 300                                                                                          # Desired width of all imagery (int)
+run_script.offset = 25                                                                                          # Desired distance between the bounding box and the edge of the patch (int)
+
+# ------------ Evaluation Command Options ------------
+evaluate.command = 'noise'                                                                                      # Logic command for evaluation: choose from ('single', 'all','random','noise')
+evaluate.image_path = 'alternative_data/10tosubmit'                                                                                   # Path to data folder of images (string)
+evaluate.numpy_patch_path =  '/Users/ian/Desktop/bayes_Results/results/multiImage100x100Patch_a1.0_lr20_0.8_30/numpy_files/Checkpoint_01550_conf=0.05.npy'   #'results/bigClosePatch_lr0.8_30/numpy_files/Checkpoint_00746_conf=0.08.npy'      # Path to delta to load for evaluation (string)
+#evaluate.coco_names = 'yolov3/data/coco.names'                                                                 # Path to the coco names file (string)
+#evaluate.givenX = 0                                                                                            # Desired X to evaluate the patch at if using 'single', use wisely as user can specify overlap with the object box (int)
+#evaluate.givenY = 0                                                                                            # Desired Y to evaluate the patch at if using 'single', use wisely as user can specify overlap with the object box (int)
+evaluate.step_size = 200                                                                                        # The desired step size when using 'all' (int)
+
+# ------------ Visualization Command Options ------------
+visualize.image_path = '/Users/ian/Desktop/pictures_from_lillian'                                                                                  # Path to data folder of images (string)
+visualize.numpy_patch_path = '/Users/ian/Desktop/bayes_Results/results/multiImage100x100Patch_a1.0_lr20_0.8_30/numpy_files/Checkpoint_01550_conf=0.05.npy'        # Path to delta to load for visualization (string)
+
+# ------------ Optimize Command Options ------------
+optimize.learning_rates = [1,2]                                                                                 # List of learning rates to try (list of ints)
+optimize.generations_choices = [1,2]                                                                            # List of number of generations to try (list of ints)
+
+# ------------ Attack Generation Command Options ------------
+generate_attack.alpha = 1                                                                                     # Momentum (float)
+generate_attack.epochs = 5000                                                                                   # Number of Epochs to train for (int)
+generate_attack.lr = 20                                                                                        # Learning rate (int)
+generate_attack.lr_scale = 0.80                                                                                 # Scale learning rate by this amount every 'lr_length' epochs (float)
+generate_attack.lr_length = 30                                                                                  # Drop learning rate every lr_length epochs (int)
+generate_attack.patience  = 250                                                                                 # Give up if we haven't reduced confidence in patience epochs (int)
+generate_attack.load = False                                                                                    # Option to restart training from previously saved files (boolean)
+generate_attack.load_path = 'results/trails_delete2/numpy_files/Checkpoint_00003_conf=0.98.npy'                 # Path to a saved .npy file with associated state dictionary if load = True  (string)
+generate_attack.randomize = True                                                                                # Option to randomize and use EOT to average gradients (boolean)
+generate_attack.givenX = 100                                                                                      # Specific X to train a patch if randomize = False (int)
+generate_attack.givenY = 33                                                                                      # Specific Y to train a patch if randomize = False (int)
+generate_attack.num_random_generations = 15                                                                     # Number of random generations to average per epoch when using randomize = True (int)
+generate_attack.image_path = 'data/'                                                                            # Path to data folder of images (string)
+generate_attack.patch_width = 100                                                                               # Desired patch width (int)
+generate_attack.patch_height = 100                                                                              # Desired patch height (int)
+
+INFO:root:================== Gin configuration end =======================
+INFO:root:
+INFO:root:--------------------------------------------------------------------------------------------
+INFO:root:------------------- Attack Generation started: 2020.08.13:15.54.56   -----------------------
+INFO:root:Running on cuda:0 with seed: 152 and randomize: True
+INFO:root:Found a person with 0.9834137 % certainty on initial image load of image 1
+INFO:root:Found a person with 0.9717751 % certainty on initial image load of image 2
+INFO:root:Found a person with 0.8544703 % certainty on initial image load of image 3
+INFO:root:Found a person with 0.9838867 % certainty on initial image load of image 4
+INFO:root:Found a person with 0.9765737 % certainty on initial image load of image 5
+INFO:root:Found a person with 0.7795849 % certainty on initial image load of image 6
+INFO:root:Found a person with 0.9131281 % certainty on initial image load of image 7
+INFO:root:Found a person with 0.8843894 % certainty on initial image load of image 8
+INFO:root:Found a person with 0.9648771 % certainty on initial image load of image 9
+INFO:root:Found a person with 0.9912264 % certainty on initial image load of image 10
+INFO:root:Found a person with 0.9605885 % certainty on initial image load of image 11
+INFO:root:Found a person with 0.9809661 % certainty on initial image load of image 12
+INFO:root:Found a person with 0.7378757 % certainty on initial image load of image 13
+INFO:root:Found a person with 0.7405343 % certainty on initial image load of image 14
+INFO:root:Found a person with 0.7975817 % certainty on initial image load of image 15
+INFO:root:Found a person with 0.7434218 % certainty on initial image load of image 16
+INFO:root:Found a person with 0.9497313 % certainty on initial image load of image 17
+INFO:root:Found a person with 0.9308274 % certainty on initial image load of image 18
+INFO:root:Found a person with 0.9638846 % certainty on initial image load of image 19
+INFO:root:Found a person with 0.7760401 % certainty on initial image load of image 20
+INFO:root:Found a person with 0.9687500 % certainty on initial image load of image 21
+INFO:root:Found a person with 0.9024382 % certainty on initial image load of image 22
+INFO:root:Found a person with 0.9897509 % certainty on initial image load of image 23
+INFO:root:Found a person with 0.9570520 % certainty on initial image load of image 24
+INFO:root:Found a person with 0.9648931 % certainty on initial image load of image 25
+INFO:root:Found a person with 0.7103062 % certainty on initial image load of image 26
+INFO:root:Found a person with 0.9926791 % certainty on initial image load of image 27
+INFO:root:Found a person with 0.9175205 % certainty on initial image load of image 28
+INFO:root:Found a person with 0.9585357 % certainty on initial image load of image 29
+INFO:root:Found a person with 0.9207058 % certainty on initial image load of image 30
+INFO:root:Found a person with 0.7679164 % certainty on initial image load of image 31
+INFO:root:Found a person with 0.9834270 % certainty on initial image load of image 32
+INFO:root:Calculated a possible 3075 random positions for patch placement on image 1
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 2
+INFO:root:Calculated a possible 3000 random positions for patch placement on image 3
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 4
+INFO:root:Calculated a possible 3525 random positions for patch placement on image 5
+INFO:root:Calculated a possible 3750 random positions for patch placement on image 6
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 7
+INFO:root:Calculated a possible 1350 random positions for patch placement on image 8
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 9
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 10
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 11
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 12
+INFO:root:Calculated a possible 3750 random positions for patch placement on image 13
+INFO:root:Calculated a possible 3750 random positions for patch placement on image 14
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 15
+INFO:root:Calculated a possible 3750 random positions for patch placement on image 16
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 17
+INFO:root:Calculated a possible 4950 random positions for patch placement on image 18
+INFO:root:Calculated a possible 2100 random positions for patch placement on image 19
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 20
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 21
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 22
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 23
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 24
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 25
+INFO:root:Calculated a possible 3750 random positions for patch placement on image 26
+INFO:root:Calculated a possible 2925 random positions for patch placement on image 27
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 28
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 29
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 30
+INFO:root:Calculated a possible 5550 random positions for patch placement on image 31
+INFO:root:Calculated a possible 1875 random positions for patch placement on image 32
+INFO:root:Epoch: 0 of 5000:   Loss: -1.0910e-05  Confidence: 0.9037  Best Confidence: 0.9037 at epoch 0
+INFO:root:Epoch: 1 of 5000:   Loss: +1.3142e-03  Confidence: 0.9024  Best Confidence: 0.9024 at epoch 1
+INFO:root:Epoch: 2 of 5000:   Loss: +8.2823e-03  Confidence: 0.8954  Best Confidence: 0.8954 at epoch 2
+INFO:root:Epoch: 3 of 5000:   Loss: +1.2860e-02  Confidence: 0.8888  Best Confidence: 0.8888 at epoch 3
+INFO:root:Epoch: 4 of 5000:   Loss: +1.3896e-02  Confidence: 0.8878  Best Confidence: 0.8878 at epoch 4
+INFO:root:Epoch: 5 of 5000:   Loss: +2.3171e-02  Confidence: 0.8785  Best Confidence: 0.8785 at epoch 5
+INFO:root:Epoch: 6 of 5000:   Loss: +2.5763e-02  Confidence: 0.8759  Best Confidence: 0.8759 at epoch 6
+INFO:root:Epoch: 7 of 5000:   Loss: +2.6787e-02  Confidence: 0.8651  Best Confidence: 0.8651 at epoch 7
+INFO:root:Epoch: 8 of 5000:   Loss: +2.7241e-02  Confidence: 0.8605  Best Confidence: 0.8605 at epoch 8
+INFO:root:Epoch: 9 of 5000:   Loss: +3.7467e-02  Confidence: 0.8540  Best Confidence: 0.8540 at epoch 9
+INFO:root:Epoch: 10 of 5000:   Loss: +5.2652e-02  Confidence: 0.8392  Best Confidence: 0.8392 at epoch 10
+INFO:root:Epoch: 11 of 5000:   Loss: +6.4222e-02  Confidence: 0.8333  Best Confidence: 0.8333 at epoch 11
+INFO:root:Epoch: 12 of 5000:   Loss: +7.7357e-02  Confidence: 0.8109  Best Confidence: 0.8109 at epoch 12
+INFO:root:Epoch: 13 of 5000:   Loss: +8.5334e-02  Confidence: 0.7764  Best Confidence: 0.7764 at epoch 13
+INFO:root:Epoch: 14 of 5000:   Loss: +1.0947e-01  Confidence: 0.7508  Best Confidence: 0.7508 at epoch 14
+INFO:root:Epoch: 15 of 5000:   Loss: +1.2582e-01  Confidence: 0.7288  Best Confidence: 0.7288 at epoch 15
+INFO:root:Epoch: 16 of 5000:   Loss: +1.3517e-01  Confidence: 0.7044  Best Confidence: 0.7044 at epoch 16
+INFO:root:Epoch: 17 of 5000:   Loss: +1.7222e-01  Confidence: 0.6812  Best Confidence: 0.6812 at epoch 17
+INFO:root:Epoch: 18 of 5000:   Loss: +1.7099e-01  Confidence: 0.6545  Best Confidence: 0.6545 at epoch 18
+INFO:root:Epoch: 19 of 5000:   Loss: +2.0711e-01  Confidence: 0.6250  Best Confidence: 0.6250 at epoch 19
+INFO:root:Epoch: 20 of 5000:   Loss: +2.0702e-01  Confidence: 0.6164  Best Confidence: 0.6164 at epoch 20
+INFO:root:Epoch: 21 of 5000:   Loss: +1.9784e-01  Confidence: 0.5794  Best Confidence: 0.5794 at epoch 21
+INFO:root:Epoch: 22 of 5000:   Loss: +2.1521e-01  Confidence: 0.5829  Best Confidence: 0.5794 at epoch 21
+INFO:root:Epoch: 23 of 5000:   Loss: +2.2315e-01  Confidence: 0.5676  Best Confidence: 0.5676 at epoch 23
+INFO:root:Epoch: 24 of 5000:   Loss: +2.0824e-01  Confidence: 0.5404  Best Confidence: 0.5404 at epoch 24
+INFO:root:Epoch: 25 of 5000:   Loss: +2.4148e-01  Confidence: 0.5437  Best Confidence: 0.5404 at epoch 24
+INFO:root:Epoch: 26 of 5000:   Loss: +2.0841e-01  Confidence: 0.5425  Best Confidence: 0.5404 at epoch 24
+INFO:root:Epoch: 27 of 5000:   Loss: +2.4745e-01  Confidence: 0.5372  Best Confidence: 0.5372 at epoch 27
+INFO:root:Epoch: 28 of 5000:   Loss: +2.1877e-01  Confidence: 0.5269  Best Confidence: 0.5269 at epoch 28
+INFO:root:Epoch: 29 of 5000:   Loss: +2.6419e-01  Confidence: 0.5191  Best Confidence: 0.5191 at epoch 29
+INFO:root:Adjusting learning rate to 16.0
+INFO:root:Epoch: 30 of 5000:   Loss: +2.3305e-01  Confidence: 0.4994  Best Confidence: 0.4994 at epoch 30
+INFO:root:Epoch: 31 of 5000:   Loss: +2.1959e-01  Confidence: 0.4882  Best Confidence: 0.4882 at epoch 31
+INFO:root:Epoch: 32 of 5000:   Loss: +2.3919e-01  Confidence: 0.4815  Best Confidence: 0.4815 at epoch 32
+INFO:root:Epoch: 33 of 5000:   Loss: +2.4587e-01  Confidence: 0.4635  Best Confidence: 0.4635 at epoch 33
+INFO:root:Epoch: 34 of 5000:   Loss: +2.3537e-01  Confidence: 0.4821  Best Confidence: 0.4635 at epoch 33
+INFO:root:Epoch: 35 of 5000:   Loss: +2.2588e-01  Confidence: 0.4851  Best Confidence: 0.4635 at epoch 33
+INFO:root:Epoch: 36 of 5000:   Loss: +2.3472e-01  Confidence: 0.4482  Best Confidence: 0.4482 at epoch 36
+INFO:root:Epoch: 37 of 5000:   Loss: +2.3410e-01  Confidence: 0.4676  Best Confidence: 0.4482 at epoch 36
+INFO:root:Epoch: 38 of 5000:   Loss: +2.2506e-01  Confidence: 0.4456  Best Confidence: 0.4456 at epoch 38
+INFO:root:Epoch: 39 of 5000:   Loss: +2.3523e-01  Confidence: 0.4489  Best Confidence: 0.4456 at epoch 38
+INFO:root:Epoch: 40 of 5000:   Loss: +2.5106e-01  Confidence: 0.4557  Best Confidence: 0.4456 at epoch 38
+INFO:root:Epoch: 41 of 5000:   Loss: +2.2627e-01  Confidence: 0.4463  Best Confidence: 0.4456 at epoch 38
+INFO:root:Epoch: 42 of 5000:   Loss: +2.7257e-01  Confidence: 0.4733  Best Confidence: 0.4456 at epoch 38
+INFO:root:Epoch: 43 of 5000:   Loss: +2.0767e-01  Confidence: 0.4070  Best Confidence: 0.4070 at epoch 43
+INFO:root:Epoch: 44 of 5000:   Loss: +2.6435e-01  Confidence: 0.4561  Best Confidence: 0.4070 at epoch 43
+INFO:root:Epoch: 45 of 5000:   Loss: +2.2479e-01  Confidence: 0.4191  Best Confidence: 0.4070 at epoch 43
+INFO:root:Epoch: 46 of 5000:   Loss: +2.1940e-01  Confidence: 0.4212  Best Confidence: 0.4070 at epoch 43
+INFO:root:Epoch: 47 of 5000:   Loss: +2.2646e-01  Confidence: 0.4242  Best Confidence: 0.4070 at epoch 43
+INFO:root:Epoch: 48 of 5000:   Loss: +2.2000e-01  Confidence: 0.4126  Best Confidence: 0.4070 at epoch 43
+INFO:root:Epoch: 49 of 5000:   Loss: +2.5117e-01  Confidence: 0.4252  Best Confidence: 0.4070 at epoch 43
+INFO:root:Epoch: 50 of 5000:   Loss: +2.2966e-01  Confidence: 0.4033  Best Confidence: 0.4033 at epoch 50
+INFO:root:Epoch: 51 of 5000:   Loss: +2.5297e-01  Confidence: 0.4238  Best Confidence: 0.4033 at epoch 50
+INFO:root:Epoch: 52 of 5000:   Loss: +2.2805e-01  Confidence: 0.4061  Best Confidence: 0.4033 at epoch 50
+INFO:root:Epoch: 53 of 5000:   Loss: +2.4892e-01  Confidence: 0.4139  Best Confidence: 0.4033 at epoch 50
+INFO:root:Epoch: 54 of 5000:   Loss: +2.2881e-01  Confidence: 0.4015  Best Confidence: 0.4015 at epoch 54
+INFO:root:Epoch: 55 of 5000:   Loss: +2.4328e-01  Confidence: 0.4056  Best Confidence: 0.4015 at epoch 54
+INFO:root:Epoch: 56 of 5000:   Loss: +2.4174e-01  Confidence: 0.3976  Best Confidence: 0.3976 at epoch 56
+INFO:root:Epoch: 57 of 5000:   Loss: +2.5957e-01  Confidence: 0.4135  Best Confidence: 0.3976 at epoch 56
+INFO:root:Epoch: 58 of 5000:   Loss: +2.3782e-01  Confidence: 0.3943  Best Confidence: 0.3943 at epoch 58
+INFO:root:Epoch: 59 of 5000:   Loss: +2.4795e-01  Confidence: 0.3999  Best Confidence: 0.3943 at epoch 58
+INFO:root:Adjusting learning rate to 12.8
+INFO:root:Epoch: 60 of 5000:   Loss: +1.9325e-01  Confidence: 0.3721  Best Confidence: 0.3721 at epoch 60
+INFO:root:Epoch: 61 of 5000:   Loss: +2.4757e-01  Confidence: 0.3959  Best Confidence: 0.3721 at epoch 60
+INFO:root:Epoch: 62 of 5000:   Loss: +2.3731e-01  Confidence: 0.4049  Best Confidence: 0.3721 at epoch 60
+INFO:root:Epoch: 63 of 5000:   Loss: +2.3535e-01  Confidence: 0.3658  Best Confidence: 0.3658 at epoch 63
+INFO:root:Epoch: 64 of 5000:   Loss: +2.2576e-01  Confidence: 0.3715  Best Confidence: 0.3658 at epoch 63
+INFO:root:Epoch: 65 of 5000:   Loss: +2.4072e-01  Confidence: 0.3873  Best Confidence: 0.3658 at epoch 63
+INFO:root:Epoch: 66 of 5000:   Loss: +2.2554e-01  Confidence: 0.3625  Best Confidence: 0.3625 at epoch 66
+INFO:root:Epoch: 67 of 5000:   Loss: +2.2432e-01  Confidence: 0.3486  Best Confidence: 0.3486 at epoch 67
+INFO:root:Epoch: 68 of 5000:   Loss: +2.3649e-01  Confidence: 0.3632  Best Confidence: 0.3486 at epoch 67
+INFO:root:Epoch: 69 of 5000:   Loss: +2.4778e-01  Confidence: 0.3772  Best Confidence: 0.3486 at epoch 67
+INFO:root:Epoch: 70 of 5000:   Loss: +2.2782e-01  Confidence: 0.3697  Best Confidence: 0.3486 at epoch 67
+INFO:root:Epoch: 71 of 5000:   Loss: +2.3311e-01  Confidence: 0.3552  Best Confidence: 0.3486 at epoch 67
+INFO:root:Epoch: 72 of 5000:   Loss: +2.1354e-01  Confidence: 0.3336  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 73 of 5000:   Loss: +2.1564e-01  Confidence: 0.3451  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 74 of 5000:   Loss: +2.3105e-01  Confidence: 0.3440  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 75 of 5000:   Loss: +2.2432e-01  Confidence: 0.3557  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 76 of 5000:   Loss: +2.2740e-01  Confidence: 0.3444  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 77 of 5000:   Loss: +2.1427e-01  Confidence: 0.3384  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 78 of 5000:   Loss: +2.3830e-01  Confidence: 0.3541  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 79 of 5000:   Loss: +2.2396e-01  Confidence: 0.3429  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 80 of 5000:   Loss: +2.2917e-01  Confidence: 0.3510  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 81 of 5000:   Loss: +2.2498e-01  Confidence: 0.3422  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 82 of 5000:   Loss: +2.3930e-01  Confidence: 0.3367  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 83 of 5000:   Loss: +2.2866e-01  Confidence: 0.3480  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 84 of 5000:   Loss: +2.4196e-01  Confidence: 0.3417  Best Confidence: 0.3336 at epoch 72
+INFO:root:Epoch: 85 of 5000:   Loss: +2.1814e-01  Confidence: 0.3300  Best Confidence: 0.3300 at epoch 85
+INFO:root:Epoch: 86 of 5000:   Loss: +2.3729e-01  Confidence: 0.3446  Best Confidence: 0.3300 at epoch 85
+INFO:root:Epoch: 87 of 5000:   Loss: +2.1053e-01  Confidence: 0.3462  Best Confidence: 0.3300 at epoch 85
+INFO:root:Epoch: 88 of 5000:   Loss: +2.0378e-01  Confidence: 0.3213  Best Confidence: 0.3213 at epoch 88
+INFO:root:Epoch: 89 of 5000:   Loss: +2.3433e-01  Confidence: 0.3330  Best Confidence: 0.3213 at epoch 88
+INFO:root:Adjusting learning rate to 10.240000000000002
+INFO:root:Epoch: 90 of 5000:   Loss: +2.3634e-01  Confidence: 0.3291  Best Confidence: 0.3213 at epoch 88
+INFO:root:Epoch: 91 of 5000:   Loss: +2.2588e-01  Confidence: 0.3290  Best Confidence: 0.3213 at epoch 88
+INFO:root:Epoch: 92 of 5000:   Loss: +2.1452e-01  Confidence: 0.3028  Best Confidence: 0.3028 at epoch 92
+INFO:root:Epoch: 93 of 5000:   Loss: +2.3783e-01  Confidence: 0.3177  Best Confidence: 0.3028 at epoch 92
+INFO:root:Epoch: 94 of 5000:   Loss: +2.3501e-01  Confidence: 0.3130  Best Confidence: 0.3028 at epoch 92
+INFO:root:Epoch: 95 of 5000:   Loss: +2.3829e-01  Confidence: 0.3133  Best Confidence: 0.3028 at epoch 92
+INFO:root:Epoch: 96 of 5000:   Loss: +2.3472e-01  Confidence: 0.3113  Best Confidence: 0.3028 at epoch 92
+INFO:root:Epoch: 97 of 5000:   Loss: +2.2285e-01  Confidence: 0.3006  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 98 of 5000:   Loss: +2.1870e-01  Confidence: 0.3216  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 99 of 5000:   Loss: +2.3444e-01  Confidence: 0.3280  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 100 of 5000:   Loss: +2.3534e-01  Confidence: 0.3089  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 101 of 5000:   Loss: +2.0526e-01  Confidence: 0.3126  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 102 of 5000:   Loss: +2.1356e-01  Confidence: 0.3062  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 103 of 5000:   Loss: +2.2979e-01  Confidence: 0.3296  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 104 of 5000:   Loss: +2.1642e-01  Confidence: 0.3065  Best Confidence: 0.3006 at epoch 97
+INFO:root:Epoch: 105 of 5000:   Loss: +2.1788e-01  Confidence: 0.2964  Best Confidence: 0.2964 at epoch 105
+INFO:root:Epoch: 106 of 5000:   Loss: +2.3175e-01  Confidence: 0.3136  Best Confidence: 0.2964 at epoch 105
+INFO:root:Epoch: 107 of 5000:   Loss: +2.2101e-01  Confidence: 0.3018  Best Confidence: 0.2964 at epoch 105
+INFO:root:Epoch: 108 of 5000:   Loss: +2.2229e-01  Confidence: 0.3029  Best Confidence: 0.2964 at epoch 105
+INFO:root:Epoch: 109 of 5000:   Loss: +2.2873e-01  Confidence: 0.3116  Best Confidence: 0.2964 at epoch 105
+INFO:root:Epoch: 110 of 5000:   Loss: +2.1970e-01  Confidence: 0.2955  Best Confidence: 0.2955 at epoch 110
+INFO:root:Epoch: 111 of 5000:   Loss: +2.2918e-01  Confidence: 0.3013  Best Confidence: 0.2955 at epoch 110
+INFO:root:Epoch: 112 of 5000:   Loss: +2.1891e-01  Confidence: 0.2898  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 113 of 5000:   Loss: +2.2574e-01  Confidence: 0.2938  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 114 of 5000:   Loss: +2.3766e-01  Confidence: 0.3083  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 115 of 5000:   Loss: +2.1710e-01  Confidence: 0.3040  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 116 of 5000:   Loss: +2.3185e-01  Confidence: 0.3080  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 117 of 5000:   Loss: +2.2053e-01  Confidence: 0.2986  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 118 of 5000:   Loss: +2.3675e-01  Confidence: 0.2960  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 119 of 5000:   Loss: +2.4251e-01  Confidence: 0.3056  Best Confidence: 0.2898 at epoch 112
+INFO:root:Adjusting learning rate to 8.192000000000002
+INFO:root:Epoch: 120 of 5000:   Loss: +2.2621e-01  Confidence: 0.2987  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 121 of 5000:   Loss: +2.2998e-01  Confidence: 0.2920  Best Confidence: 0.2898 at epoch 112
+INFO:root:Epoch: 122 of 5000:   Loss: +2.2035e-01  Confidence: 0.2873  Best Confidence: 0.2873 at epoch 122
+INFO:root:Epoch: 123 of 5000:   Loss: +2.2245e-01  Confidence: 0.2759  Best Confidence: 0.2759 at epoch 123
+INFO:root:Epoch: 124 of 5000:   Loss: +2.2261e-01  Confidence: 0.2777  Best Confidence: 0.2759 at epoch 123
+INFO:root:Epoch: 125 of 5000:   Loss: +2.2526e-01  Confidence: 0.2925  Best Confidence: 0.2759 at epoch 123
+INFO:root:Epoch: 126 of 5000:   Loss: +2.2519e-01  Confidence: 0.2878  Best Confidence: 0.2759 at epoch 123
+INFO:root:Epoch: 127 of 5000:   Loss: +2.1121e-01  Confidence: 0.2726  Best Confidence: 0.2726 at epoch 127
+INFO:root:Epoch: 128 of 5000:   Loss: +2.1804e-01  Confidence: 0.2796  Best Confidence: 0.2726 at epoch 127
+INFO:root:Epoch: 129 of 5000:   Loss: +2.1769e-01  Confidence: 0.2886  Best Confidence: 0.2726 at epoch 127
+INFO:root:Epoch: 130 of 5000:   Loss: +2.1850e-01  Confidence: 0.2783  Best Confidence: 0.2726 at epoch 127
+INFO:root:Epoch: 131 of 5000:   Loss: +2.2818e-01  Confidence: 0.2755  Best Confidence: 0.2726 at epoch 127
+INFO:root:Epoch: 132 of 5000:   Loss: +2.1245e-01  Confidence: 0.2673  Best Confidence: 0.2673 at epoch 132
+INFO:root:Epoch: 133 of 5000:   Loss: +2.1909e-01  Confidence: 0.2735  Best Confidence: 0.2673 at epoch 132
+INFO:root:Epoch: 134 of 5000:   Loss: +2.0848e-01  Confidence: 0.2808  Best Confidence: 0.2673 at epoch 132
+INFO:root:Epoch: 135 of 5000:   Loss: +2.0348e-01  Confidence: 0.2754  Best Confidence: 0.2673 at epoch 132
+INFO:root:Epoch: 136 of 5000:   Loss: +2.2647e-01  Confidence: 0.2706  Best Confidence: 0.2673 at epoch 132
+INFO:root:Epoch: 137 of 5000:   Loss: +2.1555e-01  Confidence: 0.2682  Best Confidence: 0.2673 at epoch 132
+INFO:root:Epoch: 138 of 5000:   Loss: +2.3799e-01  Confidence: 0.2843  Best Confidence: 0.2673 at epoch 132
+INFO:root:Epoch: 139 of 5000:   Loss: +1.9964e-01  Confidence: 0.2640  Best Confidence: 0.2640 at epoch 139
+INFO:root:Epoch: 140 of 5000:   Loss: +2.2430e-01  Confidence: 0.2943  Best Confidence: 0.2640 at epoch 139
+INFO:root:Epoch: 141 of 5000:   Loss: +2.0728e-01  Confidence: 0.2883  Best Confidence: 0.2640 at epoch 139
+INFO:root:Epoch: 142 of 5000:   Loss: +2.0472e-01  Confidence: 0.2675  Best Confidence: 0.2640 at epoch 139
+INFO:root:Epoch: 143 of 5000:   Loss: +2.2376e-01  Confidence: 0.2647  Best Confidence: 0.2640 at epoch 139
+INFO:root:Epoch: 144 of 5000:   Loss: +2.3422e-01  Confidence: 0.2796  Best Confidence: 0.2640 at epoch 139
+INFO:root:Epoch: 145 of 5000:   Loss: +2.1231e-01  Confidence: 0.2749  Best Confidence: 0.2640 at epoch 139
+INFO:root:Epoch: 146 of 5000:   Loss: +2.0872e-01  Confidence: 0.2521  Best Confidence: 0.2521 at epoch 146
+INFO:root:Epoch: 147 of 5000:   Loss: +2.1274e-01  Confidence: 0.2647  Best Confidence: 0.2521 at epoch 146
+INFO:root:Epoch: 148 of 5000:   Loss: +2.0417e-01  Confidence: 0.2522  Best Confidence: 0.2521 at epoch 146
+INFO:root:Epoch: 149 of 5000:   Loss: +2.1558e-01  Confidence: 0.2594  Best Confidence: 0.2521 at epoch 146
+INFO:root:Adjusting learning rate to 6.553600000000002
+INFO:root:Epoch: 150 of 5000:   Loss: +2.1115e-01  Confidence: 0.2645  Best Confidence: 0.2521 at epoch 146
+INFO:root:Epoch: 151 of 5000:   Loss: +2.0593e-01  Confidence: 0.2532  Best Confidence: 0.2521 at epoch 146
+INFO:root:Epoch: 152 of 5000:   Loss: +2.1004e-01  Confidence: 0.2471  Best Confidence: 0.2471 at epoch 152
+INFO:root:Epoch: 153 of 5000:   Loss: +2.2484e-01  Confidence: 0.2488  Best Confidence: 0.2471 at epoch 152
+INFO:root:Epoch: 154 of 5000:   Loss: +2.0845e-01  Confidence: 0.2432  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 155 of 5000:   Loss: +2.0717e-01  Confidence: 0.2513  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 156 of 5000:   Loss: +2.0753e-01  Confidence: 0.2597  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 157 of 5000:   Loss: +2.1814e-01  Confidence: 0.2665  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 158 of 5000:   Loss: +2.1652e-01  Confidence: 0.2574  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 159 of 5000:   Loss: +2.0391e-01  Confidence: 0.2544  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 160 of 5000:   Loss: +2.0072e-01  Confidence: 0.2626  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 161 of 5000:   Loss: +2.1089e-01  Confidence: 0.2444  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 162 of 5000:   Loss: +2.0861e-01  Confidence: 0.2683  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 163 of 5000:   Loss: +1.8989e-01  Confidence: 0.2566  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 164 of 5000:   Loss: +2.1422e-01  Confidence: 0.2613  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 165 of 5000:   Loss: +2.1320e-01  Confidence: 0.2688  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 166 of 5000:   Loss: +2.2296e-01  Confidence: 0.2550  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 167 of 5000:   Loss: +2.2094e-01  Confidence: 0.2634  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 168 of 5000:   Loss: +2.0911e-01  Confidence: 0.2442  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 169 of 5000:   Loss: +2.0992e-01  Confidence: 0.2480  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 170 of 5000:   Loss: +2.1482e-01  Confidence: 0.2491  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 171 of 5000:   Loss: +2.1521e-01  Confidence: 0.2555  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 172 of 5000:   Loss: +2.1088e-01  Confidence: 0.2596  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 173 of 5000:   Loss: +2.2079e-01  Confidence: 0.2816  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 174 of 5000:   Loss: +2.0266e-01  Confidence: 0.2594  Best Confidence: 0.2432 at epoch 154
+INFO:root:Epoch: 175 of 5000:   Loss: +2.0266e-01  Confidence: 0.2413  Best Confidence: 0.2413 at epoch 175
+INFO:root:Epoch: 176 of 5000:   Loss: +2.0761e-01  Confidence: 0.2574  Best Confidence: 0.2413 at epoch 175
+INFO:root:Epoch: 177 of 5000:   Loss: +2.0453e-01  Confidence: 0.2553  Best Confidence: 0.2413 at epoch 175
+INFO:root:Epoch: 178 of 5000:   Loss: +2.1594e-01  Confidence: 0.2691  Best Confidence: 0.2413 at epoch 175
+INFO:root:Epoch: 179 of 5000:   Loss: +2.0528e-01  Confidence: 0.2519  Best Confidence: 0.2413 at epoch 175
+INFO:root:Adjusting learning rate to 5.242880000000002
+INFO:root:Epoch: 180 of 5000:   Loss: +2.1425e-01  Confidence: 0.2378  Best Confidence: 0.2378 at epoch 180
+INFO:root:Epoch: 181 of 5000:   Loss: +2.0940e-01  Confidence: 0.2553  Best Confidence: 0.2378 at epoch 180
+INFO:root:Epoch: 182 of 5000:   Loss: +2.0402e-01  Confidence: 0.2350  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 183 of 5000:   Loss: +1.9290e-01  Confidence: 0.2421  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 184 of 5000:   Loss: +2.3284e-01  Confidence: 0.2520  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 185 of 5000:   Loss: +2.2653e-01  Confidence: 0.2676  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 186 of 5000:   Loss: +2.0752e-01  Confidence: 0.2528  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 187 of 5000:   Loss: +2.1128e-01  Confidence: 0.2416  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 188 of 5000:   Loss: +1.9934e-01  Confidence: 0.2436  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 189 of 5000:   Loss: +2.2126e-01  Confidence: 0.2542  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 190 of 5000:   Loss: +2.0790e-01  Confidence: 0.2400  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 191 of 5000:   Loss: +2.1215e-01  Confidence: 0.2542  Best Confidence: 0.2350 at epoch 182
+INFO:root:Epoch: 192 of 5000:   Loss: +2.0133e-01  Confidence: 0.2213  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 193 of 5000:   Loss: +2.1242e-01  Confidence: 0.2344  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 194 of 5000:   Loss: +2.0034e-01  Confidence: 0.2415  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 195 of 5000:   Loss: +1.9712e-01  Confidence: 0.2304  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 196 of 5000:   Loss: +1.9048e-01  Confidence: 0.2355  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 197 of 5000:   Loss: +2.0025e-01  Confidence: 0.2348  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 198 of 5000:   Loss: +2.0058e-01  Confidence: 0.2367  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 199 of 5000:   Loss: +2.0289e-01  Confidence: 0.2255  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 200 of 5000:   Loss: +2.0618e-01  Confidence: 0.2290  Best Confidence: 0.2213 at epoch 192
+INFO:root:Epoch: 201 of 5000:   Loss: +1.9244e-01  Confidence: 0.2162  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 202 of 5000:   Loss: +2.0683e-01  Confidence: 0.2507  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 203 of 5000:   Loss: +2.1520e-01  Confidence: 0.2271  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 204 of 5000:   Loss: +2.1004e-01  Confidence: 0.2469  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 205 of 5000:   Loss: +2.1379e-01  Confidence: 0.2262  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 206 of 5000:   Loss: +2.0185e-01  Confidence: 0.2237  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 207 of 5000:   Loss: +1.9868e-01  Confidence: 0.2209  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 208 of 5000:   Loss: +1.9730e-01  Confidence: 0.2290  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 209 of 5000:   Loss: +2.1219e-01  Confidence: 0.2447  Best Confidence: 0.2162 at epoch 201
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 210 of 5000:   Loss: +1.9597e-01  Confidence: 0.2180  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 211 of 5000:   Loss: +1.9273e-01  Confidence: 0.2177  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 212 of 5000:   Loss: +2.0822e-01  Confidence: 0.2455  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 213 of 5000:   Loss: +2.1002e-01  Confidence: 0.2501  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 214 of 5000:   Loss: +2.0648e-01  Confidence: 0.2287  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 215 of 5000:   Loss: +2.2915e-01  Confidence: 0.2594  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 216 of 5000:   Loss: +1.9351e-01  Confidence: 0.2195  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 217 of 5000:   Loss: +2.0266e-01  Confidence: 0.2390  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 218 of 5000:   Loss: +1.8721e-01  Confidence: 0.2227  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 219 of 5000:   Loss: +2.0619e-01  Confidence: 0.2362  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 220 of 5000:   Loss: +1.9353e-01  Confidence: 0.2274  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 221 of 5000:   Loss: +2.1895e-01  Confidence: 0.2564  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 222 of 5000:   Loss: +1.9116e-01  Confidence: 0.2248  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 223 of 5000:   Loss: +2.1365e-01  Confidence: 0.2491  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 224 of 5000:   Loss: +2.0291e-01  Confidence: 0.2257  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 225 of 5000:   Loss: +2.0585e-01  Confidence: 0.2381  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 226 of 5000:   Loss: +2.0776e-01  Confidence: 0.2415  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 227 of 5000:   Loss: +1.9946e-01  Confidence: 0.2319  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 228 of 5000:   Loss: +2.0583e-01  Confidence: 0.2420  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 229 of 5000:   Loss: +2.0674e-01  Confidence: 0.2258  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 230 of 5000:   Loss: +2.0266e-01  Confidence: 0.2477  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 231 of 5000:   Loss: +1.9007e-01  Confidence: 0.2174  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 232 of 5000:   Loss: +1.9942e-01  Confidence: 0.2451  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 233 of 5000:   Loss: +2.0556e-01  Confidence: 0.2490  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 234 of 5000:   Loss: +1.9371e-01  Confidence: 0.2356  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 235 of 5000:   Loss: +2.1379e-01  Confidence: 0.2458  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 236 of 5000:   Loss: +2.0552e-01  Confidence: 0.2398  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 237 of 5000:   Loss: +1.9798e-01  Confidence: 0.2343  Best Confidence: 0.2162 at epoch 201
+INFO:root:Epoch: 238 of 5000:   Loss: +2.0365e-01  Confidence: 0.2077  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 239 of 5000:   Loss: +1.9437e-01  Confidence: 0.2197  Best Confidence: 0.2077 at epoch 238
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 240 of 5000:   Loss: +2.0754e-01  Confidence: 0.2239  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 241 of 5000:   Loss: +2.1951e-01  Confidence: 0.2361  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 242 of 5000:   Loss: +1.9274e-01  Confidence: 0.2157  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 243 of 5000:   Loss: +2.0770e-01  Confidence: 0.2290  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 244 of 5000:   Loss: +1.8748e-01  Confidence: 0.2321  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 245 of 5000:   Loss: +2.1562e-01  Confidence: 0.2266  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 246 of 5000:   Loss: +1.9626e-01  Confidence: 0.2279  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 247 of 5000:   Loss: +1.9159e-01  Confidence: 0.2130  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 248 of 5000:   Loss: +2.1031e-01  Confidence: 0.2359  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 249 of 5000:   Loss: +1.9904e-01  Confidence: 0.2247  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 250 of 5000:   Loss: +2.1977e-01  Confidence: 0.2282  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 251 of 5000:   Loss: +1.9415e-01  Confidence: 0.2204  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 252 of 5000:   Loss: +2.0158e-01  Confidence: 0.2326  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 253 of 5000:   Loss: +1.8949e-01  Confidence: 0.2213  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 254 of 5000:   Loss: +1.9192e-01  Confidence: 0.2147  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 255 of 5000:   Loss: +2.0181e-01  Confidence: 0.2246  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 256 of 5000:   Loss: +2.0286e-01  Confidence: 0.2372  Best Confidence: 0.2077 at epoch 238
+INFO:root:Epoch: 257 of 5000:   Loss: +1.7619e-01  Confidence: 0.2066  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 258 of 5000:   Loss: +2.1110e-01  Confidence: 0.2397  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 259 of 5000:   Loss: +2.1465e-01  Confidence: 0.2321  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 260 of 5000:   Loss: +1.9751e-01  Confidence: 0.2313  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 261 of 5000:   Loss: +2.0089e-01  Confidence: 0.2460  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 262 of 5000:   Loss: +2.0021e-01  Confidence: 0.2174  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 263 of 5000:   Loss: +1.9577e-01  Confidence: 0.2209  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 264 of 5000:   Loss: +1.9911e-01  Confidence: 0.2240  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 265 of 5000:   Loss: +2.0679e-01  Confidence: 0.2257  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 266 of 5000:   Loss: +2.2738e-01  Confidence: 0.2330  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 267 of 5000:   Loss: +2.0038e-01  Confidence: 0.2275  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 268 of 5000:   Loss: +2.0398e-01  Confidence: 0.2369  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 269 of 5000:   Loss: +1.9504e-01  Confidence: 0.2157  Best Confidence: 0.2066 at epoch 257
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 270 of 5000:   Loss: +1.9661e-01  Confidence: 0.2224  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 271 of 5000:   Loss: +1.9585e-01  Confidence: 0.2241  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 272 of 5000:   Loss: +1.9869e-01  Confidence: 0.2215  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 273 of 5000:   Loss: +1.9952e-01  Confidence: 0.2233  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 274 of 5000:   Loss: +2.0001e-01  Confidence: 0.2116  Best Confidence: 0.2066 at epoch 257
+INFO:root:Epoch: 275 of 5000:   Loss: +1.9700e-01  Confidence: 0.2043  Best Confidence: 0.2043 at epoch 275
+INFO:root:Epoch: 276 of 5000:   Loss: +1.8346e-01  Confidence: 0.2127  Best Confidence: 0.2043 at epoch 275
+INFO:root:Epoch: 277 of 5000:   Loss: +1.9183e-01  Confidence: 0.1998  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 278 of 5000:   Loss: +1.9746e-01  Confidence: 0.2382  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 279 of 5000:   Loss: +2.0448e-01  Confidence: 0.2313  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 280 of 5000:   Loss: +1.8241e-01  Confidence: 0.2262  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 281 of 5000:   Loss: +2.0178e-01  Confidence: 0.2151  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 282 of 5000:   Loss: +2.0454e-01  Confidence: 0.2318  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 283 of 5000:   Loss: +1.9812e-01  Confidence: 0.2329  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 284 of 5000:   Loss: +2.0846e-01  Confidence: 0.2179  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 285 of 5000:   Loss: +2.0890e-01  Confidence: 0.2253  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 286 of 5000:   Loss: +1.8635e-01  Confidence: 0.2061  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 287 of 5000:   Loss: +1.9957e-01  Confidence: 0.2198  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 288 of 5000:   Loss: +1.8890e-01  Confidence: 0.2276  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 289 of 5000:   Loss: +2.0184e-01  Confidence: 0.2280  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 290 of 5000:   Loss: +1.8691e-01  Confidence: 0.2122  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 291 of 5000:   Loss: +1.9495e-01  Confidence: 0.2211  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 292 of 5000:   Loss: +2.0244e-01  Confidence: 0.2207  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 293 of 5000:   Loss: +1.8971e-01  Confidence: 0.2059  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 294 of 5000:   Loss: +2.0721e-01  Confidence: 0.2367  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 295 of 5000:   Loss: +1.8368e-01  Confidence: 0.2202  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 296 of 5000:   Loss: +1.8782e-01  Confidence: 0.2149  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 297 of 5000:   Loss: +1.9866e-01  Confidence: 0.2143  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 298 of 5000:   Loss: +2.0616e-01  Confidence: 0.2210  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 299 of 5000:   Loss: +1.8744e-01  Confidence: 0.2143  Best Confidence: 0.1998 at epoch 277
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 300 of 5000:   Loss: +2.0231e-01  Confidence: 0.2084  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 301 of 5000:   Loss: +1.9430e-01  Confidence: 0.2262  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 302 of 5000:   Loss: +2.1554e-01  Confidence: 0.2101  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 303 of 5000:   Loss: +1.9870e-01  Confidence: 0.2160  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 304 of 5000:   Loss: +2.0561e-01  Confidence: 0.2294  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 305 of 5000:   Loss: +1.9879e-01  Confidence: 0.2125  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 306 of 5000:   Loss: +2.1244e-01  Confidence: 0.2287  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 307 of 5000:   Loss: +2.0450e-01  Confidence: 0.2301  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 308 of 5000:   Loss: +1.9049e-01  Confidence: 0.2290  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 309 of 5000:   Loss: +1.9964e-01  Confidence: 0.2194  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 310 of 5000:   Loss: +2.0300e-01  Confidence: 0.2196  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 311 of 5000:   Loss: +1.9854e-01  Confidence: 0.2203  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 312 of 5000:   Loss: +1.9652e-01  Confidence: 0.2102  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 313 of 5000:   Loss: +1.9122e-01  Confidence: 0.2263  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 314 of 5000:   Loss: +1.8966e-01  Confidence: 0.2070  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 315 of 5000:   Loss: +1.9255e-01  Confidence: 0.2213  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 316 of 5000:   Loss: +1.9094e-01  Confidence: 0.2186  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 317 of 5000:   Loss: +1.8996e-01  Confidence: 0.2118  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 318 of 5000:   Loss: +1.8668e-01  Confidence: 0.2119  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 319 of 5000:   Loss: +1.9596e-01  Confidence: 0.2038  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 320 of 5000:   Loss: +1.9814e-01  Confidence: 0.2314  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 321 of 5000:   Loss: +1.8309e-01  Confidence: 0.2120  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 322 of 5000:   Loss: +1.9873e-01  Confidence: 0.2197  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 323 of 5000:   Loss: +1.9336e-01  Confidence: 0.2200  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 324 of 5000:   Loss: +1.8569e-01  Confidence: 0.2100  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 325 of 5000:   Loss: +1.9514e-01  Confidence: 0.2106  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 326 of 5000:   Loss: +1.8825e-01  Confidence: 0.2140  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 327 of 5000:   Loss: +2.0063e-01  Confidence: 0.2273  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 328 of 5000:   Loss: +1.9698e-01  Confidence: 0.2088  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 329 of 5000:   Loss: +1.9387e-01  Confidence: 0.2214  Best Confidence: 0.1998 at epoch 277
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 330 of 5000:   Loss: +2.0212e-01  Confidence: 0.2251  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 331 of 5000:   Loss: +1.9623e-01  Confidence: 0.2165  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 332 of 5000:   Loss: +1.8742e-01  Confidence: 0.2190  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 333 of 5000:   Loss: +1.9921e-01  Confidence: 0.2256  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 334 of 5000:   Loss: +1.9119e-01  Confidence: 0.2089  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 335 of 5000:   Loss: +1.8218e-01  Confidence: 0.2113  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 336 of 5000:   Loss: +2.0463e-01  Confidence: 0.2307  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 337 of 5000:   Loss: +2.0329e-01  Confidence: 0.2216  Best Confidence: 0.1998 at epoch 277
+INFO:root:Epoch: 338 of 5000:   Loss: +1.7400e-01  Confidence: 0.1962  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 339 of 5000:   Loss: +1.8284e-01  Confidence: 0.2204  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 340 of 5000:   Loss: +1.9469e-01  Confidence: 0.2141  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 341 of 5000:   Loss: +2.0147e-01  Confidence: 0.2130  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 342 of 5000:   Loss: +1.9036e-01  Confidence: 0.2042  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 343 of 5000:   Loss: +1.9646e-01  Confidence: 0.2236  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 344 of 5000:   Loss: +1.7150e-01  Confidence: 0.2077  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 345 of 5000:   Loss: +1.9870e-01  Confidence: 0.2101  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 346 of 5000:   Loss: +1.9880e-01  Confidence: 0.2203  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 347 of 5000:   Loss: +2.0241e-01  Confidence: 0.2175  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 348 of 5000:   Loss: +1.9096e-01  Confidence: 0.2103  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 349 of 5000:   Loss: +2.0454e-01  Confidence: 0.1971  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 350 of 5000:   Loss: +1.8706e-01  Confidence: 0.2087  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 351 of 5000:   Loss: +1.8059e-01  Confidence: 0.2109  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 352 of 5000:   Loss: +1.9844e-01  Confidence: 0.2196  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 353 of 5000:   Loss: +2.1001e-01  Confidence: 0.2207  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 354 of 5000:   Loss: +1.9272e-01  Confidence: 0.2211  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 355 of 5000:   Loss: +1.8781e-01  Confidence: 0.2048  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 356 of 5000:   Loss: +1.9234e-01  Confidence: 0.2087  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 357 of 5000:   Loss: +1.9130e-01  Confidence: 0.2283  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 358 of 5000:   Loss: +1.9492e-01  Confidence: 0.2220  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 359 of 5000:   Loss: +1.8848e-01  Confidence: 0.2042  Best Confidence: 0.1962 at epoch 338
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 360 of 5000:   Loss: +1.8627e-01  Confidence: 0.2028  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 361 of 5000:   Loss: +1.8608e-01  Confidence: 0.2057  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 362 of 5000:   Loss: +1.9618e-01  Confidence: 0.2162  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 363 of 5000:   Loss: +1.9629e-01  Confidence: 0.2219  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 364 of 5000:   Loss: +1.9076e-01  Confidence: 0.2172  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 365 of 5000:   Loss: +1.8214e-01  Confidence: 0.2020  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 366 of 5000:   Loss: +1.8402e-01  Confidence: 0.2003  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 367 of 5000:   Loss: +1.9452e-01  Confidence: 0.2102  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 368 of 5000:   Loss: +1.9216e-01  Confidence: 0.2100  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 369 of 5000:   Loss: +1.9022e-01  Confidence: 0.2330  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 370 of 5000:   Loss: +1.8922e-01  Confidence: 0.2179  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 371 of 5000:   Loss: +2.0447e-01  Confidence: 0.2113  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 372 of 5000:   Loss: +1.8423e-01  Confidence: 0.2131  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 373 of 5000:   Loss: +1.8367e-01  Confidence: 0.2089  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 374 of 5000:   Loss: +1.9927e-01  Confidence: 0.2199  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 375 of 5000:   Loss: +1.9244e-01  Confidence: 0.2119  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 376 of 5000:   Loss: +1.9185e-01  Confidence: 0.2202  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 377 of 5000:   Loss: +1.9410e-01  Confidence: 0.2254  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 378 of 5000:   Loss: +1.7226e-01  Confidence: 0.1971  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 379 of 5000:   Loss: +1.9345e-01  Confidence: 0.2113  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 380 of 5000:   Loss: +2.0555e-01  Confidence: 0.2269  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 381 of 5000:   Loss: +1.9565e-01  Confidence: 0.2158  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 382 of 5000:   Loss: +1.8313e-01  Confidence: 0.2096  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 383 of 5000:   Loss: +1.9415e-01  Confidence: 0.2121  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 384 of 5000:   Loss: +1.9530e-01  Confidence: 0.2082  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 385 of 5000:   Loss: +1.9535e-01  Confidence: 0.2225  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 386 of 5000:   Loss: +1.8435e-01  Confidence: 0.2018  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 387 of 5000:   Loss: +2.1258e-01  Confidence: 0.2069  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 388 of 5000:   Loss: +2.0002e-01  Confidence: 0.2073  Best Confidence: 0.1962 at epoch 338
+INFO:root:Epoch: 389 of 5000:   Loss: +1.9221e-01  Confidence: 0.2155  Best Confidence: 0.1962 at epoch 338
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 390 of 5000:   Loss: +1.7455e-01  Confidence: 0.1959  Best Confidence: 0.1959 at epoch 390
+INFO:root:Epoch: 391 of 5000:   Loss: +1.7037e-01  Confidence: 0.1884  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 392 of 5000:   Loss: +2.0222e-01  Confidence: 0.2157  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 393 of 5000:   Loss: +2.0751e-01  Confidence: 0.2235  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 394 of 5000:   Loss: +2.1115e-01  Confidence: 0.2353  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 395 of 5000:   Loss: +1.9876e-01  Confidence: 0.2142  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 396 of 5000:   Loss: +1.9337e-01  Confidence: 0.2351  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 397 of 5000:   Loss: +1.7693e-01  Confidence: 0.2095  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 398 of 5000:   Loss: +1.9155e-01  Confidence: 0.2101  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 399 of 5000:   Loss: +1.9373e-01  Confidence: 0.2111  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 400 of 5000:   Loss: +1.9713e-01  Confidence: 0.2012  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 401 of 5000:   Loss: +1.9318e-01  Confidence: 0.2088  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 402 of 5000:   Loss: +1.9697e-01  Confidence: 0.2338  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 403 of 5000:   Loss: +2.0578e-01  Confidence: 0.2258  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 404 of 5000:   Loss: +2.0518e-01  Confidence: 0.2151  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 405 of 5000:   Loss: +1.8771e-01  Confidence: 0.2002  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 406 of 5000:   Loss: +1.8987e-01  Confidence: 0.2005  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 407 of 5000:   Loss: +1.8778e-01  Confidence: 0.2103  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 408 of 5000:   Loss: +1.9141e-01  Confidence: 0.2166  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 409 of 5000:   Loss: +2.0181e-01  Confidence: 0.2172  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 410 of 5000:   Loss: +1.8913e-01  Confidence: 0.2111  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 411 of 5000:   Loss: +1.9489e-01  Confidence: 0.2026  Best Confidence: 0.1884 at epoch 391
+INFO:root:Epoch: 412 of 5000:   Loss: +1.8099e-01  Confidence: 0.1839  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 413 of 5000:   Loss: +1.9611e-01  Confidence: 0.2152  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 414 of 5000:   Loss: +1.8626e-01  Confidence: 0.2119  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 415 of 5000:   Loss: +1.7579e-01  Confidence: 0.2001  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 416 of 5000:   Loss: +1.8050e-01  Confidence: 0.2014  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 417 of 5000:   Loss: +1.9297e-01  Confidence: 0.2097  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 418 of 5000:   Loss: +1.9397e-01  Confidence: 0.2216  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 419 of 5000:   Loss: +2.0050e-01  Confidence: 0.2266  Best Confidence: 0.1839 at epoch 412
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 420 of 5000:   Loss: +1.9019e-01  Confidence: 0.1907  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 421 of 5000:   Loss: +1.9333e-01  Confidence: 0.1918  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 422 of 5000:   Loss: +2.0350e-01  Confidence: 0.2281  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 423 of 5000:   Loss: +1.9761e-01  Confidence: 0.2143  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 424 of 5000:   Loss: +1.9055e-01  Confidence: 0.1979  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 425 of 5000:   Loss: +2.0500e-01  Confidence: 0.2168  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 426 of 5000:   Loss: +1.8695e-01  Confidence: 0.2115  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 427 of 5000:   Loss: +1.9765e-01  Confidence: 0.2132  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 428 of 5000:   Loss: +2.0108e-01  Confidence: 0.2101  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 429 of 5000:   Loss: +1.9846e-01  Confidence: 0.2164  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 430 of 5000:   Loss: +1.8252e-01  Confidence: 0.1927  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 431 of 5000:   Loss: +1.8559e-01  Confidence: 0.2000  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 432 of 5000:   Loss: +1.8722e-01  Confidence: 0.2043  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 433 of 5000:   Loss: +1.6887e-01  Confidence: 0.2151  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 434 of 5000:   Loss: +2.0461e-01  Confidence: 0.2061  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 435 of 5000:   Loss: +1.8997e-01  Confidence: 0.2081  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 436 of 5000:   Loss: +2.1731e-01  Confidence: 0.2248  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 437 of 5000:   Loss: +1.8691e-01  Confidence: 0.2131  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 438 of 5000:   Loss: +1.8439e-01  Confidence: 0.2086  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 439 of 5000:   Loss: +1.9098e-01  Confidence: 0.2071  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 440 of 5000:   Loss: +1.8874e-01  Confidence: 0.1987  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 441 of 5000:   Loss: +1.8117e-01  Confidence: 0.2159  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 442 of 5000:   Loss: +1.9577e-01  Confidence: 0.2069  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 443 of 5000:   Loss: +1.9381e-01  Confidence: 0.2102  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 444 of 5000:   Loss: +2.0505e-01  Confidence: 0.2124  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 445 of 5000:   Loss: +1.7788e-01  Confidence: 0.2022  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 446 of 5000:   Loss: +1.8577e-01  Confidence: 0.2107  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 447 of 5000:   Loss: +1.8642e-01  Confidence: 0.2083  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 448 of 5000:   Loss: +1.9047e-01  Confidence: 0.2129  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 449 of 5000:   Loss: +1.8538e-01  Confidence: 0.2054  Best Confidence: 0.1839 at epoch 412
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 450 of 5000:   Loss: +2.0348e-01  Confidence: 0.2119  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 451 of 5000:   Loss: +1.9979e-01  Confidence: 0.2134  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 452 of 5000:   Loss: +1.9214e-01  Confidence: 0.2066  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 453 of 5000:   Loss: +2.1738e-01  Confidence: 0.2237  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 454 of 5000:   Loss: +1.8694e-01  Confidence: 0.2036  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 455 of 5000:   Loss: +1.8387e-01  Confidence: 0.1982  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 456 of 5000:   Loss: +1.8304e-01  Confidence: 0.1978  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 457 of 5000:   Loss: +1.9260e-01  Confidence: 0.2195  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 458 of 5000:   Loss: +1.8624e-01  Confidence: 0.1933  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 459 of 5000:   Loss: +1.8504e-01  Confidence: 0.2128  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 460 of 5000:   Loss: +1.8866e-01  Confidence: 0.2028  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 461 of 5000:   Loss: +1.9638e-01  Confidence: 0.2044  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 462 of 5000:   Loss: +1.8178e-01  Confidence: 0.1972  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 463 of 5000:   Loss: +1.7843e-01  Confidence: 0.1870  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 464 of 5000:   Loss: +1.6794e-01  Confidence: 0.1904  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 465 of 5000:   Loss: +1.9830e-01  Confidence: 0.2052  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 466 of 5000:   Loss: +2.0347e-01  Confidence: 0.2161  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 467 of 5000:   Loss: +1.8523e-01  Confidence: 0.2122  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 468 of 5000:   Loss: +1.9832e-01  Confidence: 0.2124  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 469 of 5000:   Loss: +1.8345e-01  Confidence: 0.1938  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 470 of 5000:   Loss: +1.8568e-01  Confidence: 0.1980  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 471 of 5000:   Loss: +1.9082e-01  Confidence: 0.2225  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 472 of 5000:   Loss: +1.7904e-01  Confidence: 0.2045  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 473 of 5000:   Loss: +1.7215e-01  Confidence: 0.1939  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 474 of 5000:   Loss: +1.8056e-01  Confidence: 0.1991  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 475 of 5000:   Loss: +1.8716e-01  Confidence: 0.1898  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 476 of 5000:   Loss: +2.0085e-01  Confidence: 0.2315  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 477 of 5000:   Loss: +1.9814e-01  Confidence: 0.2083  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 478 of 5000:   Loss: +1.9047e-01  Confidence: 0.1981  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 479 of 5000:   Loss: +1.8612e-01  Confidence: 0.1996  Best Confidence: 0.1839 at epoch 412
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 480 of 5000:   Loss: +1.9882e-01  Confidence: 0.2067  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 481 of 5000:   Loss: +1.9465e-01  Confidence: 0.2192  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 482 of 5000:   Loss: +1.8833e-01  Confidence: 0.2137  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 483 of 5000:   Loss: +1.8592e-01  Confidence: 0.2090  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 484 of 5000:   Loss: +1.8843e-01  Confidence: 0.2083  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 485 of 5000:   Loss: +1.8675e-01  Confidence: 0.1980  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 486 of 5000:   Loss: +1.8559e-01  Confidence: 0.2151  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 487 of 5000:   Loss: +1.9670e-01  Confidence: 0.2130  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 488 of 5000:   Loss: +1.8938e-01  Confidence: 0.2181  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 489 of 5000:   Loss: +1.8606e-01  Confidence: 0.2084  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 490 of 5000:   Loss: +1.9472e-01  Confidence: 0.2030  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 491 of 5000:   Loss: +1.8472e-01  Confidence: 0.2020  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 492 of 5000:   Loss: +1.7826e-01  Confidence: 0.2066  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 493 of 5000:   Loss: +1.9561e-01  Confidence: 0.2127  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 494 of 5000:   Loss: +1.9864e-01  Confidence: 0.2158  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 495 of 5000:   Loss: +1.8302e-01  Confidence: 0.2064  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 496 of 5000:   Loss: +1.8526e-01  Confidence: 0.1967  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 497 of 5000:   Loss: +1.9560e-01  Confidence: 0.2072  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 498 of 5000:   Loss: +1.8454e-01  Confidence: 0.2049  Best Confidence: 0.1839 at epoch 412
+INFO:root:Epoch: 499 of 5000:   Loss: +1.8045e-01  Confidence: 0.1770  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 500 of 5000:   Loss: +1.9495e-01  Confidence: 0.2100  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 501 of 5000:   Loss: +1.9673e-01  Confidence: 0.2133  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 502 of 5000:   Loss: +1.8066e-01  Confidence: 0.1925  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 503 of 5000:   Loss: +1.8330e-01  Confidence: 0.2012  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 504 of 5000:   Loss: +1.7589e-01  Confidence: 0.1873  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 505 of 5000:   Loss: +1.7980e-01  Confidence: 0.1864  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 506 of 5000:   Loss: +1.9305e-01  Confidence: 0.2019  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 507 of 5000:   Loss: +1.9476e-01  Confidence: 0.2157  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 508 of 5000:   Loss: +1.8634e-01  Confidence: 0.2035  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 509 of 5000:   Loss: +1.8738e-01  Confidence: 0.2029  Best Confidence: 0.1770 at epoch 499
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 510 of 5000:   Loss: +1.7900e-01  Confidence: 0.2046  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 511 of 5000:   Loss: +1.8373e-01  Confidence: 0.2091  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 512 of 5000:   Loss: +1.8905e-01  Confidence: 0.2041  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 513 of 5000:   Loss: +1.7125e-01  Confidence: 0.2085  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 514 of 5000:   Loss: +1.7522e-01  Confidence: 0.1834  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 515 of 5000:   Loss: +1.8302e-01  Confidence: 0.2090  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 516 of 5000:   Loss: +1.7526e-01  Confidence: 0.1957  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 517 of 5000:   Loss: +1.8905e-01  Confidence: 0.2091  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 518 of 5000:   Loss: +1.8254e-01  Confidence: 0.1867  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 519 of 5000:   Loss: +1.7087e-01  Confidence: 0.1851  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 520 of 5000:   Loss: +1.9651e-01  Confidence: 0.2016  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 521 of 5000:   Loss: +1.9310e-01  Confidence: 0.2077  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 522 of 5000:   Loss: +1.8244e-01  Confidence: 0.2141  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 523 of 5000:   Loss: +1.8883e-01  Confidence: 0.2062  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 524 of 5000:   Loss: +1.8623e-01  Confidence: 0.1934  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 525 of 5000:   Loss: +1.9100e-01  Confidence: 0.2038  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 526 of 5000:   Loss: +1.8573e-01  Confidence: 0.2031  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 527 of 5000:   Loss: +1.8725e-01  Confidence: 0.2096  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 528 of 5000:   Loss: +1.7659e-01  Confidence: 0.1995  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 529 of 5000:   Loss: +1.8790e-01  Confidence: 0.1909  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 530 of 5000:   Loss: +1.9199e-01  Confidence: 0.1978  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 531 of 5000:   Loss: +1.9397e-01  Confidence: 0.1955  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 532 of 5000:   Loss: +1.9336e-01  Confidence: 0.1921  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 533 of 5000:   Loss: +1.8473e-01  Confidence: 0.1997  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 534 of 5000:   Loss: +1.9374e-01  Confidence: 0.2169  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 535 of 5000:   Loss: +2.1168e-01  Confidence: 0.2162  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 536 of 5000:   Loss: +1.8474e-01  Confidence: 0.1948  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 537 of 5000:   Loss: +1.8618e-01  Confidence: 0.2072  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 538 of 5000:   Loss: +1.8318e-01  Confidence: 0.1982  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 539 of 5000:   Loss: +1.9616e-01  Confidence: 0.2114  Best Confidence: 0.1770 at epoch 499
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 540 of 5000:   Loss: +1.8018e-01  Confidence: 0.1922  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 541 of 5000:   Loss: +1.8247e-01  Confidence: 0.1997  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 542 of 5000:   Loss: +1.8860e-01  Confidence: 0.1933  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 543 of 5000:   Loss: +2.0097e-01  Confidence: 0.2123  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 544 of 5000:   Loss: +2.1996e-01  Confidence: 0.2148  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 545 of 5000:   Loss: +1.8804e-01  Confidence: 0.2037  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 546 of 5000:   Loss: +2.0186e-01  Confidence: 0.2045  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 547 of 5000:   Loss: +2.0069e-01  Confidence: 0.2089  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 548 of 5000:   Loss: +1.9021e-01  Confidence: 0.2124  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 549 of 5000:   Loss: +1.9642e-01  Confidence: 0.1829  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 550 of 5000:   Loss: +1.9068e-01  Confidence: 0.1875  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 551 of 5000:   Loss: +1.8354e-01  Confidence: 0.1940  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 552 of 5000:   Loss: +1.9217e-01  Confidence: 0.2071  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 553 of 5000:   Loss: +2.0023e-01  Confidence: 0.2078  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 554 of 5000:   Loss: +1.6604e-01  Confidence: 0.1884  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 555 of 5000:   Loss: +2.0168e-01  Confidence: 0.2171  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 556 of 5000:   Loss: +1.7499e-01  Confidence: 0.1958  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 557 of 5000:   Loss: +1.9989e-01  Confidence: 0.1975  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 558 of 5000:   Loss: +1.9104e-01  Confidence: 0.1986  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 559 of 5000:   Loss: +1.8608e-01  Confidence: 0.1984  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 560 of 5000:   Loss: +1.8507e-01  Confidence: 0.2069  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 561 of 5000:   Loss: +1.7967e-01  Confidence: 0.1974  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 562 of 5000:   Loss: +2.0357e-01  Confidence: 0.2123  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 563 of 5000:   Loss: +1.9906e-01  Confidence: 0.2064  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 564 of 5000:   Loss: +1.7805e-01  Confidence: 0.1950  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 565 of 5000:   Loss: +1.8915e-01  Confidence: 0.1912  Best Confidence: 0.1770 at epoch 499
+INFO:root:Epoch: 566 of 5000:   Loss: +1.8276e-01  Confidence: 0.1706  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 567 of 5000:   Loss: +1.8668e-01  Confidence: 0.2077  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 568 of 5000:   Loss: +1.8847e-01  Confidence: 0.2007  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 569 of 5000:   Loss: +1.9555e-01  Confidence: 0.1966  Best Confidence: 0.1706 at epoch 566
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 570 of 5000:   Loss: +1.9540e-01  Confidence: 0.1988  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 571 of 5000:   Loss: +1.9240e-01  Confidence: 0.2113  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 572 of 5000:   Loss: +1.8728e-01  Confidence: 0.2135  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 573 of 5000:   Loss: +1.8545e-01  Confidence: 0.1842  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 574 of 5000:   Loss: +1.9560e-01  Confidence: 0.1968  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 575 of 5000:   Loss: +1.9798e-01  Confidence: 0.2226  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 576 of 5000:   Loss: +1.8803e-01  Confidence: 0.2027  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 577 of 5000:   Loss: +1.9683e-01  Confidence: 0.2095  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 578 of 5000:   Loss: +2.0397e-01  Confidence: 0.2086  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 579 of 5000:   Loss: +1.7604e-01  Confidence: 0.1856  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 580 of 5000:   Loss: +1.8329e-01  Confidence: 0.1919  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 581 of 5000:   Loss: +1.8640e-01  Confidence: 0.1976  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 582 of 5000:   Loss: +2.0041e-01  Confidence: 0.2069  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 583 of 5000:   Loss: +2.0979e-01  Confidence: 0.2199  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 584 of 5000:   Loss: +1.8367e-01  Confidence: 0.1984  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 585 of 5000:   Loss: +1.8746e-01  Confidence: 0.1916  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 586 of 5000:   Loss: +1.8953e-01  Confidence: 0.1996  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 587 of 5000:   Loss: +1.8992e-01  Confidence: 0.1907  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 588 of 5000:   Loss: +1.8337e-01  Confidence: 0.1988  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 589 of 5000:   Loss: +1.7565e-01  Confidence: 0.1775  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 590 of 5000:   Loss: +1.8091e-01  Confidence: 0.1912  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 591 of 5000:   Loss: +1.9245e-01  Confidence: 0.2009  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 592 of 5000:   Loss: +1.9831e-01  Confidence: 0.2095  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 593 of 5000:   Loss: +1.8863e-01  Confidence: 0.1985  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 594 of 5000:   Loss: +1.8940e-01  Confidence: 0.1945  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 595 of 5000:   Loss: +1.8988e-01  Confidence: 0.1946  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 596 of 5000:   Loss: +1.9425e-01  Confidence: 0.1930  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 597 of 5000:   Loss: +1.8264e-01  Confidence: 0.2055  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 598 of 5000:   Loss: +1.8223e-01  Confidence: 0.1845  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 599 of 5000:   Loss: +1.8060e-01  Confidence: 0.1951  Best Confidence: 0.1706 at epoch 566
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 600 of 5000:   Loss: +1.9684e-01  Confidence: 0.2022  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 601 of 5000:   Loss: +1.9226e-01  Confidence: 0.2048  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 602 of 5000:   Loss: +1.8308e-01  Confidence: 0.1820  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 603 of 5000:   Loss: +1.8241e-01  Confidence: 0.1963  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 604 of 5000:   Loss: +1.9301e-01  Confidence: 0.1947  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 605 of 5000:   Loss: +1.8679e-01  Confidence: 0.1948  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 606 of 5000:   Loss: +1.8002e-01  Confidence: 0.2055  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 607 of 5000:   Loss: +1.9920e-01  Confidence: 0.2106  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 608 of 5000:   Loss: +1.8136e-01  Confidence: 0.1885  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 609 of 5000:   Loss: +1.9605e-01  Confidence: 0.1962  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 610 of 5000:   Loss: +1.9239e-01  Confidence: 0.2059  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 611 of 5000:   Loss: +1.8466e-01  Confidence: 0.2119  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 612 of 5000:   Loss: +1.9115e-01  Confidence: 0.1994  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 613 of 5000:   Loss: +1.8205e-01  Confidence: 0.2007  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 614 of 5000:   Loss: +1.8346e-01  Confidence: 0.1996  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 615 of 5000:   Loss: +1.9511e-01  Confidence: 0.2002  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 616 of 5000:   Loss: +1.8630e-01  Confidence: 0.1936  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 617 of 5000:   Loss: +1.9215e-01  Confidence: 0.2140  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 618 of 5000:   Loss: +1.8856e-01  Confidence: 0.1957  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 619 of 5000:   Loss: +2.0482e-01  Confidence: 0.2022  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 620 of 5000:   Loss: +1.7129e-01  Confidence: 0.1747  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 621 of 5000:   Loss: +1.8376e-01  Confidence: 0.2014  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 622 of 5000:   Loss: +1.8193e-01  Confidence: 0.1951  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 623 of 5000:   Loss: +1.8393e-01  Confidence: 0.1906  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 624 of 5000:   Loss: +1.8371e-01  Confidence: 0.1935  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 625 of 5000:   Loss: +1.8892e-01  Confidence: 0.2011  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 626 of 5000:   Loss: +1.8319e-01  Confidence: 0.1934  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 627 of 5000:   Loss: +1.8327e-01  Confidence: 0.1970  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 628 of 5000:   Loss: +1.7789e-01  Confidence: 0.1884  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 629 of 5000:   Loss: +1.8692e-01  Confidence: 0.1983  Best Confidence: 0.1706 at epoch 566
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 630 of 5000:   Loss: +1.8368e-01  Confidence: 0.1853  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 631 of 5000:   Loss: +1.8643e-01  Confidence: 0.1924  Best Confidence: 0.1706 at epoch 566
+INFO:root:Epoch: 632 of 5000:   Loss: +1.6906e-01  Confidence: 0.1651  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 633 of 5000:   Loss: +1.7696e-01  Confidence: 0.1981  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 634 of 5000:   Loss: +1.9020e-01  Confidence: 0.2032  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 635 of 5000:   Loss: +2.0022e-01  Confidence: 0.2125  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 636 of 5000:   Loss: +1.8112e-01  Confidence: 0.1892  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 637 of 5000:   Loss: +1.8873e-01  Confidence: 0.1878  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 638 of 5000:   Loss: +1.8144e-01  Confidence: 0.2063  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 639 of 5000:   Loss: +1.8583e-01  Confidence: 0.1962  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 640 of 5000:   Loss: +1.8575e-01  Confidence: 0.1979  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 641 of 5000:   Loss: +1.6903e-01  Confidence: 0.1837  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 642 of 5000:   Loss: +1.8632e-01  Confidence: 0.2011  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 643 of 5000:   Loss: +1.8659e-01  Confidence: 0.1995  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 644 of 5000:   Loss: +2.0097e-01  Confidence: 0.2109  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 645 of 5000:   Loss: +1.8790e-01  Confidence: 0.1802  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 646 of 5000:   Loss: +1.8196e-01  Confidence: 0.1794  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 647 of 5000:   Loss: +1.7880e-01  Confidence: 0.1717  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 648 of 5000:   Loss: +1.8519e-01  Confidence: 0.1843  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 649 of 5000:   Loss: +1.8878e-01  Confidence: 0.1924  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 650 of 5000:   Loss: +1.8918e-01  Confidence: 0.2009  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 651 of 5000:   Loss: +1.9520e-01  Confidence: 0.2117  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 652 of 5000:   Loss: +1.8698e-01  Confidence: 0.1913  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 653 of 5000:   Loss: +1.8012e-01  Confidence: 0.1959  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 654 of 5000:   Loss: +1.6273e-01  Confidence: 0.1745  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 655 of 5000:   Loss: +1.9087e-01  Confidence: 0.2144  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 656 of 5000:   Loss: +1.7955e-01  Confidence: 0.1946  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 657 of 5000:   Loss: +1.8720e-01  Confidence: 0.1806  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 658 of 5000:   Loss: +1.8145e-01  Confidence: 0.1923  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 659 of 5000:   Loss: +1.8493e-01  Confidence: 0.1907  Best Confidence: 0.1651 at epoch 632
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 660 of 5000:   Loss: +1.7171e-01  Confidence: 0.1826  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 661 of 5000:   Loss: +1.9639e-01  Confidence: 0.2146  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 662 of 5000:   Loss: +1.7429e-01  Confidence: 0.1824  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 663 of 5000:   Loss: +1.8209e-01  Confidence: 0.2100  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 664 of 5000:   Loss: +1.7649e-01  Confidence: 0.1877  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 665 of 5000:   Loss: +1.8741e-01  Confidence: 0.1820  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 666 of 5000:   Loss: +1.9870e-01  Confidence: 0.1990  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 667 of 5000:   Loss: +1.8712e-01  Confidence: 0.1840  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 668 of 5000:   Loss: +2.0044e-01  Confidence: 0.1940  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 669 of 5000:   Loss: +1.7603e-01  Confidence: 0.2012  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 670 of 5000:   Loss: +1.7357e-01  Confidence: 0.1866  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 671 of 5000:   Loss: +1.9237e-01  Confidence: 0.2025  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 672 of 5000:   Loss: +1.8855e-01  Confidence: 0.1993  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 673 of 5000:   Loss: +1.9013e-01  Confidence: 0.1923  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 674 of 5000:   Loss: +1.7602e-01  Confidence: 0.2023  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 675 of 5000:   Loss: +1.7802e-01  Confidence: 0.1979  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 676 of 5000:   Loss: +1.7935e-01  Confidence: 0.1976  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 677 of 5000:   Loss: +1.9607e-01  Confidence: 0.1981  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 678 of 5000:   Loss: +1.7947e-01  Confidence: 0.1885  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 679 of 5000:   Loss: +1.8547e-01  Confidence: 0.1944  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 680 of 5000:   Loss: +1.9887e-01  Confidence: 0.2190  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 681 of 5000:   Loss: +1.6827e-01  Confidence: 0.1852  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 682 of 5000:   Loss: +1.9351e-01  Confidence: 0.2087  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 683 of 5000:   Loss: +1.9212e-01  Confidence: 0.2028  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 684 of 5000:   Loss: +1.6729e-01  Confidence: 0.1912  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 685 of 5000:   Loss: +1.9644e-01  Confidence: 0.1977  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 686 of 5000:   Loss: +1.8377e-01  Confidence: 0.1909  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 687 of 5000:   Loss: +1.8606e-01  Confidence: 0.1760  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 688 of 5000:   Loss: +1.9511e-01  Confidence: 0.1984  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 689 of 5000:   Loss: +1.8710e-01  Confidence: 0.2038  Best Confidence: 0.1651 at epoch 632
+INFO:root:Adjusting learning rate to 5.0
+INFO:root:Epoch: 690 of 5000:   Loss: +1.9277e-01  Confidence: 0.2083  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 691 of 5000:   Loss: +1.8445e-01  Confidence: 0.1869  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 692 of 5000:   Loss: +1.7772e-01  Confidence: 0.1881  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 693 of 5000:   Loss: +1.7295e-01  Confidence: 0.1869  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 694 of 5000:   Loss: +1.8716e-01  Confidence: 0.1979  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 695 of 5000:   Loss: +1.8450e-01  Confidence: 0.1947  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 696 of 5000:   Loss: +1.9298e-01  Confidence: 0.1981  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 697 of 5000:   Loss: +1.9309e-01  Confidence: 0.2008  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 698 of 5000:   Loss: +1.7978e-01  Confidence: 0.2007  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 699 of 5000:   Loss: +1.7808e-01  Confidence: 0.1824  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 700 of 5000:   Loss: +1.8444e-01  Confidence: 0.2003  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 701 of 5000:   Loss: +1.7695e-01  Confidence: 0.1843  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 702 of 5000:   Loss: +1.8016e-01  Confidence: 0.1933  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 703 of 5000:   Loss: +1.9698e-01  Confidence: 0.2051  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 704 of 5000:   Loss: +1.8338e-01  Confidence: 0.1865  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 705 of 5000:   Loss: +1.8660e-01  Confidence: 0.2136  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 706 of 5000:   Loss: +1.9252e-01  Confidence: 0.1837  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 707 of 5000:   Loss: +1.8345e-01  Confidence: 0.1818  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 708 of 5000:   Loss: +1.9814e-01  Confidence: 0.2077  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 709 of 5000:   Loss: +1.9842e-01  Confidence: 0.1986  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 710 of 5000:   Loss: +1.7885e-01  Confidence: 0.1843  Best Confidence: 0.1651 at epoch 632
+INFO:root:Epoch: 711 of 5000:   Loss: +1.9518e-01  Confidence: 0.1949  Best Confidence: 0.1651 at epoch 632
