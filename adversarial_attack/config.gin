@@ -1,0 +1,46 @@
+################################################ YoloV3 Adversarial Attack Generator ################################################
+
+# # ------------ Run Command Options ------------
+run_script.execute = 'train'                                                                               # Main logic command: choose from ('train','visualize','evaluate','optimize')
+run_script.device = 'cpu'                                                                                  # Device to run on ('cpu' or 'cuda:0' 'cuda')
+run_script.coco_names = 'yolov3/data/coco.names'                                                           # Path to the coco names file (string)
+run_script.log_file_name = 'training0_log.txt'                                                             # Logging file to capture console logging (string)
+#run_script.log_dir = 'logs'                                                                               # Directory for log files (string)
+run_script.run_name = 'training0'                                                                          # Run name where results are saved (string)
+run_script.height = 175                                                                                    # Desired height of all imagery (int)
+run_script.width = 300                                                                                     # Desired width of all imagery (int)
+run_script.offset = 25                                                                                     # Desired distance between the bounding box and the edge of the patch (int)
+
+# ------------ Evaluation Command Options ------------
+evaluate.command = 'random'                                                                                # Logic command for evaluation: choose from ('single', 'all','random','noise')
+evaluate.image_path = 'data/'                                                                              # Path to data folder of images (string)
+evaluate.numpy_patch_path = 'results/full_dataset/numpy_files/final_model.npy'                             # Path to delta to load for evaluation (string)
+evaluate.givenX = 0                                                                                        # Desired X to evaluate the patch at if using 'single', use wisely as user can specify overlap with the object box (int)
+evaluate.givenY = 0                                                                                        # Desired Y to evaluate the patch at if using 'single', use wisely as user can specify overlap with the object box (int)
+evaluate.step_size = 100                                                                                   # The desired step size when using 'all' (int)
+
+# ------------ Visualization Command Options ------------
+visualize.image_path = 'data/'                                                                             # Path to data folder of images (string)
+visualize.numpy_patch_path = 'results/full_dataset/numpy_files/final_model.npy'                            # Path to delta to load for visualization (string)
+visualize.save_plots = True                                                                                # Flag to save plots from visualization (boolean)
+
+# ------------ Optimize Command Options ------------
+optimize.learning_rates = [1,2]                                                                            # List of learning rates to try (list of ints)
+optimize.generations_choices = [1,2]                                                                       # List of number of generations to try (list of ints)
+
+# ------------ Attack Generation Command Options ------------
+generate_attack.alpha = 0.9                                                                                # Momentum (float)
+generate_attack.epochs = 5000                                                                              # Number of Epochs to train for (int)
+generate_attack.lr = 15                                                                                    # Learning rate (int)
+generate_attack.lr_scale = 0.80                                                                            # Scale learning rate by this amount every 'lr_length' epochs (float)
+generate_attack.lr_length = 40                                                                             # Drop learning rate every lr_length epochs (int)
+generate_attack.patience  = 100                                                                            # Give up if we haven't reduced confidence in patience epochs (int)
+generate_attack.load = False                                                                               # Option to restart training from previously saved files (boolean)
+generate_attack.load_path = 'results/full_dataset/numpy_files/final_model.npy'                             # Path to a saved .npy file with associated state dictionary if load = True  (string)
+generate_attack.randomize = True                                                                           # Option to randomize and use EOT to average gradients (boolean)
+generate_attack.givenX = 100                                                                               # Specific X to train a patch if randomize = False (int)
+generate_attack.givenY = 33                                                                                # Specific Y to train a patch if randomize = False (int)
+generate_attack.num_random_generations = 15                                                                # Number of random generations to average per epoch when using randomize = True (int)
+generate_attack.image_path = 'data/'                                                                       # Path to data folder of images (string)
+generate_attack.patch_width = 100                                                                          # Desired patch width (int)
+generate_attack.patch_height = 100                                                                         # Desired patch height (int)
