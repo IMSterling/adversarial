@@ -1,6 +1,6 @@
 # *Developing Patch Based Adversarial Attacks*
 
-![Adversarial_patch](duplicate.png){width=200px}{height=200px}
+![Adversarial_patch](duplicate.png =100x100)
 
 
 > Subtitle or Short Description Goes Here
