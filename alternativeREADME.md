@@ -115,6 +115,21 @@ python adversarial_attack.py config.gin
 ```
 <img src="visualization1.png" alt="Visualization" width="1200"/>
 
+## Evaluation
+- Set the main logic command in the config.gin to 'evaluate'
+- Set the secondary logic command if desired
+```bash
+python adversarial_attack.py config.gin
+```
+## Hyper Parameter Optimization
+- Set the main logic command in the config.gin to 'optimize'
+- Set the optimization parameters in the config.gin
+```bash
+python adversarial_attack.py config.gin
+```
+<img src="optimization1.png" alt="Optimization" width="500"/> <img src="optimization2.png" alt="Visualization" width="500"/> <img src="optimization3.png" alt="Visualization" width="500"/>
+
+
 
 ### Setup
 
