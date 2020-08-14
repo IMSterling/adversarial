@@ -1,10 +1,10 @@
-# Summer Research Adversarial Attacks
+# Developing Patch Based Adversarial Attacks
 ## Swarthmore College 
 ##### Ian McDiarmid-Sterling
 
-Welcome to my patch based adversarial attack generation package. This repository allows one to generate, evaluate, and visualize an adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my paper
+This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my report.
 
-This is the code associated with my report, generated with funding from Swarthmore College's SOAR-NSE undergraduate research program with assistance from Profesor Allan Moser 
+This is the code associated with my report, generated with funding from Swarthmore College's SOAR-NSE undergraduate research program, and with assistance from Profesor Allan Moser 
 
 --- About the repository ---
 
