@@ -1,6 +1,7 @@
 # Summer Research 2020 Adversarial Attacks
 ## Swarthmore College
-### Ian McDiarmid-Sterling
+
+
 
 
 Welcome to Ian McDiarmid-Sterling's adversarial attack generation package. 
