@@ -88,6 +88,15 @@ let generateProject = project => {
 
 ## Installation
 
+
+## Requirements
+
+Python 3.7 or later with all `requirements.txt` dependencies installed. To install all dependencies run:
+```bash
+$ pip install -U -r requirements.txt
+```
+
+
 - All the `code` required to get started
 - Images of what it should look like
 
