@@ -1,14 +1,14 @@
-# *Developing Patch Based Adversarial Attacks*
-
-
 <img src="duplicate.png" alt="Adversarial patch" width="500"/>
 
+# *Developing Patch Based Adversarial Attacks*
+## Ian McDiarmid-Sterling
+##### Swarthmore College
+##### 14 August, 2020
 
-> Subtitle or Short Description Goes Here
+This repository allows one to generate, evaluate, and visualize a patch based adversarial attack for the Yolov3 object detector, a copy of which is included in this repository. Some of the code in this repository has been pulled directly from other repositories, as cited in my research report.
 
-> ideally one sentence
+This is the code associated with my research, generated with funding from Swarthmore College's SOAR-NSE undergraduate research program, and with assistance from Profesor Allan Moser.
 
-> include terms/tags that can be searched
 
 **Badges will go here**
 
@@ -23,9 +23,6 @@
 - license
 - etc.
 
-
-
-- For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>.
 
 ***INSERT ANOTHER GRAPHIC HERE***
 
@@ -206,13 +203,8 @@ $ bower install
 
 ---
 
-## Support
-
-Reach out to me at one of the following places!
-
-- Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
-- Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
-- Insert more social links here.
+## Questions?
+Feel free to email me at ianmcdiarmidsterling at gmail dot com
 
 
 ---
