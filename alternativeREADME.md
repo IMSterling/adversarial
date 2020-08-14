@@ -1,7 +1,7 @@
 # *Developing Patch Based Adversarial Attacks*
 
-![Adversarial_patch](duplicate.png)
-<img src="duplicate.png" alt="Adversarial patch" width="200"/>
+
+<img src="duplicate.png" alt="Adversarial patch" width="500"/>
 
 
 > Subtitle or Short Description Goes Here
@@ -35,6 +35,7 @@
 - Ergo, people should understand instantly what your project is about based on your repo
 
 > Tips
+![Adversarial_patch](duplicate.png)
 
 - HAVE WHITE SPACE
 - MAKE IT PRETTY
