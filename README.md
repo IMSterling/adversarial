@@ -75,7 +75,7 @@ $ python adversarial_attack.py config.gin
 ```bash
 $ python adversarial_attack.py config.gin
 ```
-<img src="optimization1.png" alt="Optimization" width="200"/> <img src="optimization2.png" alt="Visualization" width="200"/> <img src="optimization3.png" alt="optimization" width="200"/>
+<img src="optimization1.png" alt="Optimization" width="300"/> <img src="optimization2.png" alt="Visualization" width="300"/> <img src="optimization3.png" alt="optimization" width="300"/>
 
 ---
 ## Questions
