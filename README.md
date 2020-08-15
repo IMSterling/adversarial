@@ -22,6 +22,9 @@ This is the code associated with my research, funded by the SOAR-NSE undergradua
 
 <img src="duplicate1.png" alt="Adversarial_patch" width="300" align='left'/> <img src="duplicate2.png" alt="Aversarial_patch2" width="300" align='right'/>
 
+
+---
+
 ## Hardware
 This code supports multi-threading and is both cpu and gpu compatable. In config.gin specify 'cpu' to run on a cpu, 'cuda' to run on any available gpu or 'cuda:[gpu number]' to run on a specific gpu.
 The code runs on macOS and linux.
