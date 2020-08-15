@@ -22,10 +22,10 @@ This is the code associated with my research, funded by the SOAR-NSE undergradua
   <img width="400" height="400" src="duplicate.png">
 </p>
 <p align="center">
-  <img width="400" height="400" src="duplicate1.png">
+  <img width="400" height="400" src="duplicate2.png">
 </p>
 <p align="center">
-  <img width="400" height="400" src="duplicate2.png">
+  <img width="400" height="400" src="duplicate1.png">
 </p>
 
 ---
