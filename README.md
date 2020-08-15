@@ -27,6 +27,9 @@ Python 3.7 or later with all `requirements.txt` dependencies installed. To insta
 ```bash
 $ pip install -U -r requirements.txt
 ```
+## Hardware
+This code supports multi-threading and can be run on either a cpu or a gpu. In config.gin specify 'cpu' to run on a cpu, 'cuda' to run on any available gpu or 'cuda:[gpu number]' to run on a specific gpu.
+The code runs on macOS and linux.
 
 ## Patch Training
 - Set the main logic command in config.gin to 'train'
