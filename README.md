@@ -19,6 +19,13 @@ This is the code associated with my research, funded by the SOAR-NSE undergradua
 <p align="center">
   <img width="400" height="400" src="duplicate.png">
 </p>
+<p align="left">
+  <img width="400" height="400" src="duplicate1.png">
+</p>
+<p align="right">
+  <img width="400" height="400" src="duplicate2.png">
+</p>
+
 
 
 ## Hardware
