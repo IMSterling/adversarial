@@ -7,7 +7,7 @@ This is the code associated with my research, funded by the SOAR-NSE undergradua
 
 ---
 ## *About the Repository*
-### Inside adverdarial_attack
+### Inside adversarial_attack
 - The requirements.txt file contains a listing of all required packages
 - The script adversarial_attack.py is the adversarial attack generator 
 - The config.gin file contains the options for adversarial_attack.py 
