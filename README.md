@@ -3,7 +3,7 @@
 
 This repository contains python code to generate, evaluate, and visualize a patch based adversarial example for the Yolov3 object detector, a copy of which is included  here. Some of the code in this repository has been pulled directly from other repositories, as cited in my research report.
 
-This is research code, funded by a Summer Research Fellowship Grant (SOAR-NSE) from Swarthmore College
+This is research code, funded by a 8 week Summer Research Fellowship Grant (SOAR-NSE) from Swarthmore College
 
 
 ---
