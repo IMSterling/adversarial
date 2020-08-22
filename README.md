@@ -94,7 +94,7 @@ Got questions? Email me at ianmcdiarmidsterling at gmail dot com
 ## Acknowledgments
 Special thank you for discussion, guidance, and support to:
 - Professor Allan Moser 
-- David Sterling PhD 
+- Dr. David Sterling
 
 
 Thank you to all grant donors at Swarthmore College who make undergraduate research possible.
