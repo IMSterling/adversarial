@@ -97,5 +97,8 @@ Special thank you for discussion, guidance, and support to:
 - Professor Allan Moser 
 - Dr. David Sterling
 
+## Note
+This repository will not be updated after 8/1/2020
+
 
 Thank you to all grant donors at Swarthmore College who make undergraduate research possible.
